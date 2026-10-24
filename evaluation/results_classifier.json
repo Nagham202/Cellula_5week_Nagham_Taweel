@@ -1,0 +1,261 @@
+{
+  "accuracy": 1.0,
+  "results": [
+    {
+      "message": "Explain this code:\nfor i in range(1, 11):\n    if i % 2 == 0:\n        print(i)",
+      "expected": "Code Explanation",
+      "predicted": "Code Explanation",
+      "raw_answer": "Code Explanation",
+      "correct": true,
+      "seconds": 0.24
+    },
+    {
+      "message": "What does this function do?\ndef f(s):\n    return s == s[::-1]",
+      "expected": "Code Explanation",
+      "predicted": "Code Explanation",
+      "raw_answer": "Code Explanation",
+      "correct": true,
+      "seconds": 0.29
+    },
+    {
+      "message": "Why is this loop incorrect?\ni = 0\nwhile i < 10:\n    print(i)",
+      "expected": "Code Explanation",
+      "predicted": "Code Explanation",
+      "raw_answer": "Code Explanation",
+      "correct": true,
+      "seconds": 0.5
+    },
+    {
+      "message": "Explain line by line:\nimport json\nwith open('data.json') as f:\n    data = json.load(f)\nprint(data['name'])",
+      "expected": "Code Explanation",
+      "predicted": "Code Explanation",
+      "raw_answer": "Code Explanation",
+      "correct": true,
+      "seconds": 0.51
+    },
+    {
+      "message": "Can you tell me what a lambda inside sorted() does here? sorted(users, key=lambda u: u['age'])",
+      "expected": "Code Explanation",
+      "predicted": "Code Explanation",
+      "raw_answer": "Code Explanation",
+      "correct": true,
+      "seconds": 0.91
+    },
+    {
+      "message": "I don't understand this recursion, how does it work?\ndef fact(n):\n    return 1 if n == 0 else n * fact(n - 1)",
+      "expected": "Code Explanation",
+      "predicted": "Code Explanation",
+      "raw_answer": "Code Explanation",
+      "correct": true,
+      "seconds": 0.2
+    },
+    {
+      "message": "Is there a bug in this function? It returns None sometimes.\ndef find(items, x):\n    for i, item in enumerate(items):\n        if item == x:\n            return i",
+      "expected": "Code Explanation",
+      "predicted": "Code Explanation",
+      "raw_answer": "Code Explanation",
+      "correct": true,
+      "seconds": 0.24
+    },
+    {
+      "message": "What is the time complexity of this code?\nfor a in nums:\n    for b in nums:\n        print(a + b)",
+      "expected": "Code Explanation",
+      "predicted": "Code Explanation",
+      "raw_answer": "Code Explanation",
+      "correct": true,
+      "seconds": 0.32
+    },
+    {
+      "message": "اشرح لي هذا الكود:\nresult = [n for n in range(20) if n % 3 == 0]",
+      "expected": "Code Explanation",
+      "predicted": "Code Explanation",
+      "raw_answer": "Code Explanation",
+      "correct": true,
+      "seconds": 0.41
+    },
+    {
+      "message": "Walk me through what happens when this class is created:\nclass Dog:\n    def __init__(self, name):\n        self.name = name",
+      "expected": "Code Explanation",
+      "predicted": "Code Explanation",
+      "raw_answer": "Code Explanation",
+      "correct": true,
+      "seconds": 0.23
+    },
+    {
+      "message": "Write Python code that reads a CSV file and prints the average of a column",
+      "expected": "Code Generation",
+      "predicted": "Code Generation",
+      "raw_answer": "Code Generation",
+      "correct": true,
+      "seconds": 4.37
+    },
+    {
+      "message": "Generate a CNN model in PyTorch for MNIST",
+      "expected": "Code Generation",
+      "predicted": "Code Generation",
+      "raw_answer": "Code Generation",
+      "correct": true,
+      "seconds": 0.38
+    },
+    {
+      "message": "Build a Flask API with a /users endpoint",
+      "expected": "Code Generation",
+      "predicted": "Code Generation",
+      "raw_answer": "Code Generation",
+      "correct": true,
+      "seconds": 0.18
+    },
+    {
+      "message": "Create a sorting algorithm",
+      "expected": "Code Generation",
+      "predicted": "Code Generation",
+      "raw_answer": "Code Generation",
+      "correct": true,
+      "seconds": 2.26
+    },
+    {
+      "message": "Write a function that returns the largest prime factor of n",
+      "expected": "Code Generation",
+      "predicted": "Code Generation",
+      "raw_answer": "Code Generation",
+      "correct": true,
+      "seconds": 0.2
+    },
+    {
+      "message": "I need a function to check whether a string is a palindrome",
+      "expected": "Code Generation",
+      "predicted": "Code Generation",
+      "raw_answer": "Code Generation",
+      "correct": true,
+      "seconds": 2.28
+    },
+    {
+      "message": "Convert this function to use a list comprehension:\ndef squares(n):\n    out = []\n    for i in range(n):\n        out.append(i * i)\n    return out",
+      "expected": "Code Generation",
+      "predicted": "Code Generation",
+      "raw_answer": "Code Generation",
+      "correct": true,
+      "seconds": 0.71
+    },
+    {
+      "message": "اكتب دالة بايثون ترتب قائمة من الأرقام بدون استخدام sorted",
+      "expected": "Code Generation",
+      "predicted": "Code Generation",
+      "raw_answer": "Code Generation",
+      "correct": true,
+      "seconds": 5.42
+    },
+    {
+      "message": "Implement binary search in Python with error handling",
+      "expected": "Code Generation",
+      "predicted": "Code Generation",
+      "raw_answer": "Code Generation",
+      "correct": true,
+      "seconds": 0.2
+    },
+    {
+      "message": "Can you make a script that counts the words in a text file?",
+      "expected": "Code Generation",
+      "predicted": "Code Generation",
+      "raw_answer": "Code Generation",
+      "correct": true,
+      "seconds": 0.21
+    },
+    {
+      "message": "What are the total sales per city?",
+      "expected": "Data Analysis",
+      "predicted": "Data Analysis",
+      "raw_answer": "Data Analysis",
+      "correct": true,
+      "seconds": 2.27
+    },
+    {
+      "message": "Which product sold the most in 2024?",
+      "expected": "Data Analysis",
+      "predicted": "Data Analysis",
+      "raw_answer": "Data Analysis",
+      "correct": true,
+      "seconds": 2.37
+    },
+    {
+      "message": "How many orders did we get in March 2023?",
+      "expected": "Data Analysis",
+      "predicted": "Data Analysis",
+      "raw_answer": "Data Analysis",
+      "correct": true,
+      "seconds": 2.32
+    },
+    {
+      "message": "Show me the average order value by category",
+      "expected": "Data Analysis",
+      "predicted": "Data Analysis",
+      "raw_answer": "Data Analysis",
+      "correct": true,
+      "seconds": 2.61
+    },
+    {
+      "message": "كم طلبية في رام الله؟",
+      "expected": "Data Analysis",
+      "predicted": "Data Analysis",
+      "raw_answer": "Data Analysis",
+      "correct": true,
+      "seconds": 2.4
+    },
+    {
+      "message": "شو أكثر منتج بعناه سنة 2023؟",
+      "expected": "Data Analysis",
+      "predicted": "Data Analysis",
+      "raw_answer": "Data Analysis",
+      "correct": true,
+      "seconds": 2.37
+    },
+    {
+      "message": "قديش مجموع المبيعات بالخليل؟",
+      "expected": "Data Analysis",
+      "predicted": "Data Analysis",
+      "raw_answer": "Data Analysis",
+      "correct": true,
+      "seconds": 2.34
+    },
+    {
+      "message": "اعرض المبيعات لكل شهر",
+      "expected": "Data Analysis",
+      "predicted": "Data Analysis",
+      "raw_answer": "Data Analysis",
+      "correct": true,
+      "seconds": 2.52
+    },
+    {
+      "message": "Write a SQL query that returns total sales per city",
+      "expected": "Code Generation",
+      "predicted": "Code Generation",
+      "raw_answer": "Code Generation",
+      "correct": true,
+      "seconds": 2.29
+    },
+    {
+      "message": "Write a pandas script that groups a dataframe by city and sums the sales",
+      "expected": "Code Generation",
+      "predicted": "Code Generation",
+      "raw_answer": "Code Generation",
+      "correct": true,
+      "seconds": 2.52
+    },
+    {
+      "message": "Explain this SQL: SELECT city, SUM(total) FROM sales GROUP BY city",
+      "expected": "Code Explanation",
+      "predicted": "Code Explanation",
+      "raw_answer": "Code Explanation",
+      "correct": true,
+      "seconds": 2.29
+    },
+    {
+      "message": "اكتب دالة بايثون بتحسب معدل قائمة أرقام",
+      "expected": "Code Generation",
+      "predicted": "Code Generation",
+      "raw_answer": "Code Generation",
+      "correct": true,
+      "seconds": 2.44
+    }
+  ]
+}

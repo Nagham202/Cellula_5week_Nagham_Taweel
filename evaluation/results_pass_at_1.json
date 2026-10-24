@@ -1,0 +1,285 @@
+{
+  "pass_at_1": 0.85,
+  "results": [
+    {
+      "task_id": "HumanEval/61",
+      "entry_point": "correct_bracketing",
+      "verdict": "Relevant",
+      "retrieved": [
+        "HumanEval/56",
+        "HumanEval/54",
+        "HumanEval/112"
+      ],
+      "leaked": false,
+      "passed": true,
+      "reason": "",
+      "code": "from typing import Any\n\n\ndef correct_bracketing(brackets: str) -> bool:\n    \"\"\"\n    brackets is a string of \"(\" and \")\".\n    Return True if every opening bracket has a corresponding closing bracket\n    and the brackets are properly nested.\n\n    >>> correct_bracketing(\"(\")\n    False\n    >>> correct_bracketing(\"()\")\n    True\n    >>> correct_bracketing(\"(()())\")\n    True\n    >>> correct_bracketing(\")(()\")\n    False\n    \"\"\"\n    # ---- Input validation -------------------------------------------------\n    if not isinstance(brackets, str):\n        raise TypeError(f\"Expected a string, got {type(brackets).__name__}\")\n\n    # ---- Core algorithm ----------------------------------------------------\n    depth = 0  # tracks how many '(' we have seen without a matching ')'\n    for ch in brackets:\n        if ch == \"(\":\n            depth += 1\n        elif ch == \")\":\n            depth -= 1\n        else:\n            # If any other character appears, we consider it invalid input.\n            raise ValueError(f\"Invalid character '{ch}' in input; only '(' and ')' are allowed.\")\n        # If depth goes negative, a closing bracket appeared before its opening pair.\n        if depth < 0:\n            return False\n\n    # At the end, depth must be zero for a perfectly balanced string.\n    return depth == 0\n\n\nif __name__ == \"__main__\":\n    # Simple sanity checks matching the doctest examples\n    examples = [\n        \"(\",\n        \"()\",\n        \"(()())\",\n        \")(()\",\n        \"\",          # empty string should be considered balanced\n        \"((()))()\",  # more complex but balanced\n        \"(()\",       # missing closing\n        \"())\",       # extra closing\n    ]\n\n    for ex in examples:\n        try:\n            result = correct_bracketing(ex)\n            print(f\"correct_bracketing({ex!r}) -> {result}\")\n        except (TypeError, ValueError) as e:\n            print(f\"Error for input {ex!r}: {e}\")"
+    },
+    {
+      "task_id": "HumanEval/104",
+      "entry_point": "unique_digits",
+      "verdict": "Relevant",
+      "retrieved": [
+        "HumanEval/34",
+        "HumanEval/131",
+        "HumanEval/155"
+      ],
+      "leaked": false,
+      "passed": true,
+      "reason": "",
+      "code": "from typing import List\n\ndef unique_digits(x: List[int]) -> List[int]:\n    \"\"\"\n    Return a sorted list of distinct positive integers from *x* that contain\n    **no even digit** (i.e., every digit is odd).\n\n    The result is sorted in increasing order.\n\n    Examples\n    --------\n    >>> unique_digits([15, 33, 1422, 1])\n    [1, 15, 33]\n    >>> unique_digits([152, 323, 1422, 10])\n    []\n    \"\"\"\n    # ---- input validation -------------------------------------------------\n    if not isinstance(x, list):\n        raise TypeError(\"Input must be a list of integers.\")\n    for idx, item in enumerate(x):\n        if not isinstance(item, int):\n            raise TypeError(f\"Element at index {idx} is not an integer.\")\n        if item <= 0:\n            raise ValueError(f\"Element at index {idx} must be a positive integer.\")\n\n    # ---- helper: check if a number contains any even digit ---------------\n    def has_even_digit(n: int) -> bool:\n        \"\"\"Return True if *n* has at least one even digit.\"\"\"\n        for ch in str(n):\n            if int(ch) % 2 == 0:   # even digit found\n                return True\n        return False\n\n    # ---- collect numbers without even digits, deduplicate ---------------\n    result_set = {num for num in x if not has_even_digit(num)}\n    # ---- sort and return as list -----------------------------------------\n    return sorted(result_set)\n\n\nif __name__ == \"__main__\":\n    # Example 1\n    print(unique_digits([15, 33, 1422, 1]))          # [1, 15, 33]\n\n    # Example 2\n    print(unique_digits([152, 323, 1422, 10]))       # []\n\n    # Additional tests\n    print(unique_digits([]))                         # []\n    print(unique_digits([7, 7, 77, 123]))            # [7, 77, 123]\n    # Edge case: raises errors\n    try:\n        unique_digits([15, -3, 5])\n    except Exception as e:\n        print(repr(e))  # ValueError for negative number"
+    },
+    {
+      "task_id": "HumanEval/105",
+      "entry_point": "by_length",
+      "verdict": "Relevant",
+      "retrieved": [
+        "HumanEval/116",
+        "HumanEval/73",
+        "HumanEval/109"
+      ],
+      "leaked": false,
+      "passed": true,
+      "reason": "",
+      "code": "from typing import List\n\ndef by_length(arr: List[int]) -> List[str]:\n    \"\"\"\n    Sort the integers that are between 1 and 9 inclusive, reverse the sorted list,\n    and replace each digit with its English name.\n\n    Steps:\n    1. Keep only numbers in the range 1\u20119 (inclusive). All other values are ignored.\n    2. Sort the kept numbers in ascending order.\n    3. Reverse the sorted list to obtain descending order.\n    4. Map each digit to its word representation:\n       1 \u2192 \"One\", 2 \u2192 \"Two\", \u2026, 9 \u2192 \"Nine\".\n\n    Parameters\n    ----------\n    arr: List[int]\n        List of integers (may contain values outside 1\u20119).\n\n    Returns\n    -------\n    List[str]\n        List of word strings corresponding to the processed digits.\n        Returns an empty list when `arr` is empty or contains no valid digits.\n\n    Raises\n    ------\n    TypeError\n        If `arr` is not a list (or other iterable) of integers.\n    \"\"\"\n    # ---- Input validation -------------------------------------------------\n    if not isinstance(arr, (list, tuple)):\n        raise TypeError(\"arr must be a list or tuple of integers\")\n    for i, v in enumerate(arr):\n        if not isinstance(v, int):\n            raise TypeError(f\"Element at index {i} is not an integer: {v!r}\")\n\n    # ---- Core logic -------------------------------------------------------\n    # Mapping from digit to its English name\n    digit_to_word = {\n        1: \"One\", 2: \"Two\", 3: \"Three\", 4: \"Four\",\n        5: \"Five\", 6: \"Six\", 7: \"Seven\", 8: \"Eight\", 9: \"Nine\"\n    }\n\n    # 1. Filter valid digits (1\u20119)\n    valid_digits = [x for x in arr if 1 <= x <= 9]\n\n    # 2. Sort ascending\n    valid_digits.sort()\n\n    # 3. Reverse to get descending order\n    valid_digits.reverse()\n\n    # 4. Convert each digit to its word\n    result = [digit_to_word[d] for d in valid_digits]\n\n    return result\n\n\nif __name__ == \"__main__\":\n    # Example 1: typical case\n    arr1 = [2, 1, 1, 4, 5, 8, 2, 3]\n    print(by_length(arr1))\n    # Expected: [\"Eight\", \"Five\", \"Four\", \"Three\", \"Two\", \"Two\", \"One\", \"One\"]\n\n    # Example 2: empty input\n    arr2 = []\n    print(by_length(arr2))\n    # Expected: []\n\n    # Example 3: contains strange numbers\n    arr3 = [1, -1, 55]\n    print(by_length(arr3))\n    # Expected: [\"One\"]\n\n    # Example 4: mixed valid and invalid numbers\n    arr4 = [9, 0, 7, 12, 3, 3]\n    print(by_length(arr4))\n    # Expected: [\"Nine\", \"Seven\", \"Three\", \"Three\"]"
+    },
+    {
+      "task_id": "HumanEval/42",
+      "entry_point": "incr_list",
+      "verdict": "Relevant",
+      "retrieved": [
+        "HumanEval/34",
+        "HumanEval/149",
+        "HumanEval/58"
+      ],
+      "leaked": false,
+      "passed": true,
+      "reason": "",
+      "code": "from typing import List, Union\n\nNumber = Union[int, float]\n\ndef incr_list(l: List[Number]) -> List[Number]:\n    \"\"\"\n    Return a new list where each numeric element of the input list is incremented by 1.\n\n    >>> incr_list([1, 2, 3])\n    [2, 3, 4]\n    >>> incr_list([5, 3, 5, 2, 3, 3, 9, 0, 123])\n    [6, 4, 6, 3, 4, 4, 10, 1, 124]\n    \"\"\"\n    # Validate that the argument is a list (or list\u2011like)\n    if not isinstance(l, list):\n        raise TypeError(f\"Expected a list, got {type(l).__name__}\")\n\n    # Increment each element, ensuring they are numeric\n    result: List[Number] = []\n    for idx, item in enumerate(l):\n        if not isinstance(item, (int, float)):\n            raise ValueError(f\"Element at index {idx} is not a number: {item!r}\")\n        result.append(item + 1)\n\n    return result\n\n\nif __name__ == \"__main__\":\n    # Basic examples from the docstring\n    print(incr_list([1, 2, 3]))                     # [2, 3, 4]\n    print(incr_list([5, 3, 5, 2, 3, 3, 9, 0, 123])) # [6, 4, 6, 3, 4, 4, 10, 1, 124]\n\n    # Additional edge cases\n    print(incr_list([]))                            # []\n    print(incr_list([0.5, -1.2]))                  # [1.5, -0.2]\n\n    # Demonstrate error handling (uncomment to test)\n    # incr_list(\"not a list\")   # raises TypeError\n    # incr_list([1, \"a\", 3])    # raises ValueError"
+    },
+    {
+      "task_id": "HumanEval/145",
+      "entry_point": "order_by_points",
+      "verdict": "Relevant",
+      "retrieved": [
+        "HumanEval/149",
+        "HumanEval/19",
+        "HumanEval/108"
+      ],
+      "leaked": false,
+      "passed": true,
+      "reason": "",
+      "code": "from typing import List\n\n\ndef _digit_sum_with_sign(n: int) -> int:\n    \"\"\"\n    Return the sum of the decimal digits of ``n`` where a negative number\n    contributes a negative sign only to its most\u2011significant digit.\n    Example: -12 \u2192 (-1) + 2 = 1, -1 \u2192 -1, 0 \u2192 0.\n    \"\"\"\n    # Zero is a special case \u2013 its string representation is \"0\"\n    if n == 0:\n        return 0\n\n    sign = -1 if n < 0 else 1\n    s = str(abs(n))                     # e.g. \"-12\" \u2192 \"12\"\n    digits = [int(ch) for ch in s]      # list of absolute digits\n\n    # Apply the sign only to the first (most\u2011significant) digit\n    digits[0] *= sign\n    return sum(digits)\n\n\ndef order_by_points(nums: List[int]) -> List[int]:\n    \"\"\"\n    Sort ``nums`` in ascending order by the sum of their digits.\n    If two numbers have the same digit\u2011sum, keep the original relative order\n    (i.e. stable sort based on the original index).\n\n    Parameters\n    ----------\n    nums: List[int]\n        List of integers to be sorted.\n\n    Returns\n    -------\n    List[int]\n        New list sorted by digit\u2011sum with original\u2011order tie\u2011break.\n\n    Raises\n    ------\n    TypeError\n        If ``nums`` is not a list or contains non\u2011int elements.\n    \"\"\"\n    # ---- input validation -------------------------------------------------\n    if not isinstance(nums, list):\n        raise TypeError(\"Input must be a list of integers.\")\n    if any(not isinstance(x, int) for x in nums):\n        raise TypeError(\"All elements in the list must be integers.\")\n\n    # Python's sorted is stable, so equal keys preserve original order.\n    return sorted(nums, key=_digit_sum_with_sign)\n\n\nif __name__ == \"__main__\":\n    # Basic examples from the docstring\n    print(order_by_points([1, 11, -1, -11, -12]))   # \u2192 [-1, -11, 1, -12, 11]\n    print(order_by_points([]))                     # \u2192 []\n\n    # Additional checks\n    print(order_by_points([0, -5, 5, -10, 10]))    # \u2192 [-5, 0, 5, -10, 10]\n    # Explanation:\n    # sums: -5\u2192-5, 0\u21920, 5\u21925, -10\u2192(-1)+0=-1, 10\u21921+0=1 \u2192 sorted by -5, -1, 0, 1, 5"
+    },
+    {
+      "task_id": "HumanEval/130",
+      "entry_point": "tri",
+      "verdict": "Relevant",
+      "retrieved": [
+        "HumanEval/63",
+        "HumanEval/46",
+        "HumanEval/55"
+      ],
+      "leaked": false,
+      "passed": true,
+      "reason": "",
+      "code": "from typing import List\n\n\ndef tri(n: int) -> List[int]:\n    \"\"\"\n    Return a list containing the first ``n + 1`` numbers of the Tribonacci\u2011like sequence\n    defined by:\n\n    * tri(0) = 1                     (derived from the even rule)\n    * tri(1) = 3                     (explicit base case)\n    * tri(k) = 1 + k // 2            if k is even\n    * tri(k) = tri(k\u20111) + tri(k\u20112) + (1 + (k+1)//2)\n                                      if k is odd and k \u2265 3\n\n    The odd\u2011index recurrence uses the value at ``k+1`` which is always even,\n    so it can be computed directly without forward recursion.\n\n    Parameters\n    ----------\n    n : int\n        Non\u2011negative integer indicating the highest index to generate.\n\n    Returns\n    -------\n    List[int]\n        A list ``[tri(0), tri(1), \u2026, tri(n)]``.\n\n    Raises\n    ------\n    TypeError\n        If ``n`` is not an integer.\n    ValueError\n        If ``n`` is negative.\n\n    Examples\n    --------\n    >>> tri(3)\n    [1, 3, 2, 8]\n    >>> tri(5)\n    [1, 3, 2, 8, 3, 9]\n    \"\"\"\n    # ---- input validation -------------------------------------------------\n    if not isinstance(n, int):\n        raise TypeError(f\"n must be an int, got {type(n).__name__}\")\n    if n < 0:\n        raise ValueError(\"n must be non\u2011negative\")\n\n    # ---- generate the sequence --------------------------------------------\n    result: List[int] = [0] * (n + 1)  # pre\u2011allocate for O(1) indexing\n\n    for i in range(n + 1):\n        if i == 0:\n            # even rule works for 0 as well\n            result[i] = 1 + i // 2\n        elif i == 1:\n            result[i] = 3\n        elif i % 2 == 0:          # even index\n            result[i] = 1 + i // 2\n        else:                     # odd index (i >= 3)\n            # tri(i+1) is even, so we can compute it directly\n            next_even = 1 + (i + 1) // 2\n            result[i] = result[i - 1] + result[i - 2] + next_even\n\n    return result\n\n\nif __name__ == \"__main__\":\n    # basic sanity checks\n    print(\"tri(0) ->\", tri(0))          # [1]\n    print(\"tri(3) ->\", tri(3))          # [1, 3, 2, 8]\n    print(\"tri(5) ->\", tri(5))          # [1, 3, 2, 8, 3, 9]\n    print(\"tri(10) ->\", tri(10))        # longer example"
+    },
+    {
+      "task_id": "HumanEval/88",
+      "entry_point": "sort_array",
+      "verdict": "Relevant",
+      "retrieved": [
+        "HumanEval/116",
+        "HumanEval/109",
+        "HumanEval/149"
+      ],
+      "leaked": false,
+      "passed": true,
+      "reason": "",
+      "code": "from typing import List, Sequence\n\n\ndef sort_array(array: Sequence[int]) -> List[int]:\n    \"\"\"\n    Return a **new** list containing the elements of ``array`` sorted according to\n    the parity of the sum of the first and last elements.\n\n    * If the sum is **odd**, the result is sorted in **ascending** order.\n    * If the sum is **even**, the result is sorted in **descending** order.\n    * The original ``array`` is never modified.\n\n    Parameters\n    ----------\n    array: Sequence[int]\n        A sequence (list, tuple, etc.) of non\u2011negative integers.\n\n    Returns\n    -------\n    List[int]\n        A sorted copy of ``array`` according to the rule above.\n\n    Raises\n    ------\n    TypeError\n        If ``array`` is not a sequence or contains non\u2011integer items.\n    ValueError\n        If any element is negative (the problem statement expects non\u2011negative ints).\n\n    Examples\n    --------\n    >>> sort_array([])\n    []\n    >>> sort_array([5])\n    [5]\n    >>> sort_array([2, 4, 3, 0, 1, 5])\n    [0, 1, 2, 3, 4, 5]\n    >>> sort_array([2, 4, 3, 0, 1, 5, 6])\n    [6, 5, 4, 3, 2, 1, 0]\n    \"\"\"\n    # ---- Input validation -------------------------------------------------\n    if not isinstance(array, (list, tuple)):\n        raise TypeError(\"array must be a list or tuple of integers\")\n\n    for idx, item in enumerate(array):\n        if not isinstance(item, int):\n            raise TypeError(f\"element at index {idx} is not an integer\")\n        if item < 0:\n            raise ValueError(f\"element at index {idx} is negative; expected non\u2011negative integers\")\n\n    # ---- Empty input -------------------------------------------------------\n    if len(array) == 0:\n        return []\n\n    # ---- Determine sorting direction ---------------------------------------\n    first_last_sum = array[0] + array[-1]\n    ascending = (first_last_sum % 2 == 1)   # odd -> ascending, even -> descending\n\n    # ---- Perform sorting on a copy (do not modify original) ---------------\n    sorted_copy = sorted(array, reverse=not ascending)\n    return sorted_copy\n\n\nif __name__ == \"__main__\":\n    # Demonstration of the required behaviour\n    examples = [\n        [],\n        [5],\n        [2, 4, 3, 0, 1, 5],\n        [2, 4, 3, 0, 1, 5, 6],\n    ]\n\n    for ex in examples:\n        result = sort_array(ex)\n        print(f\"sort_array({ex}) => {result}\")"
+    },
+    {
+      "task_id": "HumanEval/11",
+      "entry_point": "string_xor",
+      "verdict": "Relevant",
+      "retrieved": [
+        "HumanEval/28",
+        "HumanEval/14",
+        "HumanEval/12"
+      ],
+      "leaked": false,
+      "passed": true,
+      "reason": "",
+      "code": "from typing import List\n\n\ndef string_xor(a: str, b: str) -> str:\n    \"\"\"\n    Perform a bitwise XOR on two binary strings.\n\n    Both inputs must be strings consisting only of the characters '0' and '1'\n    and must have the same length. The result is returned as a new binary\n    string of the same length.\n\n    >>> string_xor('010', '110')\n    '100'\n    \"\"\"\n    # ---- Input validation -------------------------------------------------\n    if not isinstance(a, str) or not isinstance(b, str):\n        raise TypeError(\"Both arguments must be strings.\")\n    if len(a) != len(b):\n        raise ValueError(\"Input strings must have the same length.\")\n    if any(ch not in \"01\" for ch in a) or any(ch not in \"01\" for ch in b):\n        raise ValueError(\"Input strings must contain only '0' and '1' characters.\")\n\n    # ---- Core XOR logic ----------------------------------------------------\n    # XOR truth table: 0^0=0, 0^1=1, 1^0=1, 1^1=0\n    # Using integer conversion for each character makes the intent clear.\n    result_chars = [\n        '1' if (int(bit_a) ^ int(bit_b)) else '0'\n        for bit_a, bit_b in zip(a, b)\n    ]\n\n    return ''.join(result_chars)\n\n\nif __name__ == \"__main__\":\n    # Basic examples from the docstring\n    print(string_xor('010', '110'))          # \u2192 100\n    print(string_xor('0', '1'))              # \u2192 1\n    print(string_xor('1111', '0000'))        # \u2192 1111\n    print(string_xor('101010', '010101'))    # \u2192 111111\n\n    # Demonstrate error handling (uncomment to test)\n    # string_xor('01', '010')   # raises ValueError (different lengths)\n    # string_xor('01a', '110')  # raises ValueError (invalid character)\n    # string_xor(10, '01')      # raises TypeError (non\u2011string argument)"
+    },
+    {
+      "task_id": "HumanEval/137",
+      "entry_point": "compare_one",
+      "verdict": "Not Relevant",
+      "retrieved": [
+        "HumanEval/152",
+        "HumanEval/151",
+        "HumanEval/102"
+      ],
+      "leaked": false,
+      "passed": false,
+      "reason": "judge said Not Relevant",
+      "code": ""
+    },
+    {
+      "task_id": "HumanEval/66",
+      "entry_point": "digitSum",
+      "verdict": "Not Relevant",
+      "retrieved": [
+        "HumanEval/84",
+        "HumanEval/108",
+        "HumanEval/131"
+      ],
+      "leaked": false,
+      "passed": false,
+      "reason": "judge said Not Relevant",
+      "code": ""
+    },
+    {
+      "task_id": "HumanEval/30",
+      "entry_point": "get_positive",
+      "verdict": "Relevant",
+      "retrieved": [
+        "HumanEval/34",
+        "HumanEval/57",
+        "HumanEval/69"
+      ],
+      "leaked": false,
+      "passed": true,
+      "reason": "",
+      "code": "from typing import List, Union\n\n\ndef get_positive(l: List[Union[int, float]]) -> List[Union[int, float]]:\n    \"\"\"\n    Return only positive numbers in the list, preserving their original order.\n\n    Args:\n        l: A list containing numeric values (int or float).\n\n    Returns:\n        A new list with all elements > 0 from ``l`` in the same order.\n\n    Raises:\n        TypeError: If ``l`` is not a list or contains non\u2011numeric items.\n    \"\"\"\n    # Validate that the input is a list\n    if not isinstance(l, list):\n        raise TypeError(f\"Expected a list, got {type(l).__name__}\")\n\n    # Filter while checking each element's type\n    positives: List[Union[int, float]] = []\n    for idx, item in enumerate(l):\n        if not isinstance(item, (int, float)):\n            raise TypeError(\n                f\"All items must be int or float, but element at index {idx} is {type(item).__name__}\"\n            )\n        if item > 0:          # keep only numbers greater than zero\n            positives.append(item)\n\n    return positives\n\n\nif __name__ == \"__main__\":\n    # Example 1\n    print(get_positive([-1, 2, -4, 5, 6]))  # [2, 5, 6]\n\n    # Example 2\n    print(\n        get_positive([5, 3, -5, 2, -3, 3, 9, 0, 123, 1, -10])\n    )  # [5, 3, 2, 3, 9, 123, 1]\n\n    # Edge cases\n    print(get_positive([]))                # []\n    print(get_positive([0, -1, -2]))       # []\n    # Demonstrate error handling (uncomment to see the exception)\n    # get_positive(\"not a list\")\n    # get_positive([1, \"two\", 3])"
+    },
+    {
+      "task_id": "HumanEval/124",
+      "entry_point": "valid_date",
+      "verdict": "Not Relevant",
+      "retrieved": [
+        "HumanEval/80",
+        "HumanEval/56",
+        "HumanEval/82"
+      ],
+      "leaked": false,
+      "passed": false,
+      "reason": "judge said Not Relevant",
+      "code": ""
+    },
+    {
+      "task_id": "HumanEval/154",
+      "entry_point": "cycpattern_check",
+      "verdict": "Relevant",
+      "retrieved": [
+        "HumanEval/54",
+        "HumanEval/112",
+        "HumanEval/161"
+      ],
+      "leaked": false,
+      "passed": true,
+      "reason": "",
+      "code": "def cycpattern_check(a: str, b: str) -> bool:\n    \"\"\"\n    Return True if ``b`` or any of its cyclic rotations appears as a substring of ``a``.\n\n    A rotation of ``b`` is obtained by moving some leading characters to the end.\n    For example, the rotations of \"abc\" are \"abc\", \"bca\", and \"cab\".\n\n    Parameters\n    ----------\n    a : str\n        The string in which we search.\n    b : str\n        The pattern whose rotations we consider.\n\n    Returns\n    -------\n    bool\n        True if any rotation of ``b`` is a substring of ``a``, otherwise False.\n\n    Examples\n    --------\n    >>> cycpattern_check(\"abcd\",\"abd\")\n    False\n    >>> cycpattern_check(\"hello\",\"ell\")\n    True\n    >>> cycpattern_check(\"whassup\",\"psus\")\n    False\n    >>> cycpattern_check(\"abab\",\"baa\")\n    True\n    >>> cycpattern_check(\"efef\",\"eeff\")\n    False\n    >>> cycpattern_check(\"himenss\",\"simen\")\n    True\n    \"\"\"\n    # ---- input validation -------------------------------------------------\n    if not isinstance(a, str) or not isinstance(b, str):\n        raise TypeError(\"Both arguments must be strings.\")\n\n    # An empty pattern is trivially a substring of any string.\n    if b == \"\":\n        return True\n\n    # ---- core logic -------------------------------------------------------\n    # A rotation can be generated by slicing the string at every possible index.\n    # We stop early as soon as we find a match.\n    n = len(b)\n    for i in range(n):\n        rotation = b[i:] + b[:i]\n        if rotation in a:\n            return True\n    return False\n\n\nif __name__ == \"__main__\":\n    # Test cases from the docstring\n    examples = [\n        (\"abcd\", \"abd\", False),\n        (\"hello\", \"ell\", True),\n        (\"whassup\", \"psus\", False),\n        (\"abab\", \"baa\", True),\n        (\"efef\", \"eeff\", False),\n        (\"himenss\", \"simen\", True),\n        (\"\", \"\", True),               # edge: both empty\n        (\"abc\", \"\", True),            # edge: empty pattern\n        (\"\", \"a\", False),             # edge: empty source\n    ]\n\n    for src, pat, expected in examples:\n        result = cycpattern_check(src, pat)\n        print(f\"cycpattern_check({src!r}, {pat!r}) => {result} (expected {expected})\")"
+    },
+    {
+      "task_id": "HumanEval/18",
+      "entry_point": "how_many_times",
+      "verdict": "Relevant",
+      "retrieved": [
+        "HumanEval/16",
+        "HumanEval/113",
+        "HumanEval/155"
+      ],
+      "leaked": false,
+      "passed": true,
+      "reason": "",
+      "code": "from typing import Any\n\n\ndef how_many_times(string: str, substring: str) -> int:\n    \"\"\"\n    Find how many times a given substring can be found in the original string,\n    counting overlapping occurrences.\n\n    Parameters\n    ----------\n    string : str\n        The string to be searched.\n    substring : str\n        The pattern to look for. Must be non\u2011empty.\n\n    Returns\n    -------\n    int\n        Number of (possibly overlapping) occurrences of ``substring`` in ``string``.\n\n    Raises\n    ------\n    TypeError\n        If either argument is not a string.\n    ValueError\n        If ``substring`` is empty (the count would be ambiguous).\n\n    Examples\n    --------\n    >>> how_many_times('', 'a')\n    0\n    >>> how_many_times('aaa', 'a')\n    3\n    >>> how_many_times('aaaa', 'aa')\n    3\n    \"\"\"\n    # ---- input validation -------------------------------------------------\n    if not isinstance(string, str):\n        raise TypeError(f\"'string' must be of type str, got {type(string).__name__}\")\n    if not isinstance(substring, str):\n        raise TypeError(f\"'substring' must be of type str, got {type(substring).__name__}\")\n    if substring == \"\":\n        raise ValueError(\"substring must be non\u2011empty\")\n\n    # ---- core logic -------------------------------------------------------\n    count = 0\n    sub_len = len(substring)\n    # Only iterate while a full substring can still fit\n    for i in range(len(string) - sub_len + 1):\n        if string[i:i + sub_len] == substring:\n            count += 1\n    return count\n\n\nif __name__ == \"__main__\":\n    # Basic sanity checks matching the docstring examples\n    examples = [\n        (\"\", \"a\"),\n        (\"aaa\", \"a\"),\n        (\"aaaa\", \"aa\"),\n        (\"abababa\", \"aba\"),\n        (\"aaaaa\", \"aaa\"),\n    ]\n\n    for s, sub in examples:\n        try:\n            result = how_many_times(s, sub)\n            print(f\"how_many_times({s!r}, {sub!r}) -> {result}\")\n        except Exception as e:\n            print(f\"Error for inputs ({s!r}, {sub!r}): {e}\")"
+    },
+    {
+      "task_id": "HumanEval/127",
+      "entry_point": "intersection",
+      "verdict": "Relevant",
+      "retrieved": [
+        "HumanEval/75",
+        "HumanEval/82",
+        "HumanEval/150"
+      ],
+      "leaked": false,
+      "passed": true,
+      "reason": "",
+      "code": "from typing import Tuple, Union\n\ndef intersection(interval1: Tuple[int, int], interval2: Tuple[int, int]) -> str:\n    \"\"\"\n    Determine whether the length of the intersection of two closed integer intervals\n    is a prime number.\n\n    Parameters\n    ----------\n    interval1, interval2 : Tuple[int, int]\n        Each interval is given as (start, end) with start <= end.\n\n    Returns\n    -------\n    str\n        \"YES\" if the intersection exists and its length (end - start) is a prime number,\n        otherwise \"NO\".\n    \"\"\"\n    # ---- input validation -------------------------------------------------\n    if (not isinstance(interval1, (list, tuple)) or\n        not isinstance(interval2, (list, tuple)) or\n        len(interval1) != 2 or len(interval2) != 2):\n        raise ValueError(\"Both intervals must be a pair of integers.\")\n    if (not all(isinstance(x, int) for x in interval1) or\n        not all(isinstance(x, int) for x in interval2)):\n        raise TypeError(\"Interval bounds must be integers.\")\n\n    a_start, a_end = interval1\n    b_start, b_end = interval2\n\n    # ---- compute intersection ---------------------------------------------\n    inter_start = max(a_start, b_start)\n    inter_end   = min(a_end,   b_end)\n\n    # No overlap\n    if inter_start > inter_end:\n        return \"NO\"\n\n    # Length of a closed interval is end - start (as per problem statement)\n    length = inter_end - inter_start\n\n    # ---- prime test --------------------------------------------------------\n    def is_prime(n: int) -> bool:\n        \"\"\"Return True if n is a prime number (n >= 2).\"\"\"\n        if n < 2:\n            return False\n        if n == 2:\n            return True\n        if n % 2 == 0:\n            return False\n        # check odd divisors up to sqrt(n)\n        limit = int(n ** 0.5) + 1\n        for d in range(3, limit, 2):\n            if n % d == 0:\n                return False\n        return True\n\n    return \"YES\" if is_prime(length) else \"NO\"\n\n\nif __name__ == \"__main__\":\n    # Provided examples\n    print(intersection((1, 2), (2, 3)))          # NO\n    print(intersection((-1, 1), (0, 4)))         # NO\n    print(intersection((-3, -1), (-5, 5)))       # YES\n\n    # Additional tests\n    print(intersection((0, 10), (5, 15)))        # YES (length 5)\n    print(intersection((0, 0), (0, 0)))          # NO (length 0)\n    print(intersection((2, 5), (6, 9)))          # NO (no overlap)\n    print(intersection((1, 4), (2, 3)))          # NO (length 1)\n    print(intersection((-10, -5), (-8, -3)))    # YES (length 2)"
+    },
+    {
+      "task_id": "HumanEval/121",
+      "entry_point": "solution",
+      "verdict": "Relevant",
+      "retrieved": [
+        "HumanEval/85",
+        "HumanEval/149",
+        "HumanEval/142"
+      ],
+      "leaked": false,
+      "passed": true,
+      "reason": "",
+      "code": "from typing import List\n\ndef solution(lst: List[int]) -> int:\n    \"\"\"\n    Given a non\u2011empty list of integers, return the sum of all odd elements that are\n    located at even positions (0\u2011based indexing).\n\n    Examples\n    --------\n    solution([5, 8, 7, 1])      # => 12  (5 + 7)\n    solution([3, 3, 3, 3, 3])   # => 9   (3 + 3 + 3)\n    solution([30, 13, 24, 321])# => 0   (no odd numbers at even indices)\n    \"\"\"\n    # ---- Input validation -------------------------------------------------\n    if not isinstance(lst, list):\n        raise TypeError(\"lst must be a list\")\n    if not all(isinstance(x, int) for x in lst):\n        raise TypeError(\"all elements of lst must be integers\")\n    if len(lst) == 0:\n        raise ValueError(\"lst must be non\u2011empty\")\n\n    # ---- Core logic -------------------------------------------------------\n    # Even positions correspond to indices 0, 2, 4, ...\n    # We sum those elements that are odd (value % 2 != 0).\n    total = sum(\n        lst[i] for i in range(0, len(lst), 2) if lst[i] % 2 != 0\n    )\n    return total\n\n\nif __name__ == \"__main__\":\n    # Demonstration of the function with the examples from the docstring\n    examples = [\n        ([5, 8, 7, 1], 12),\n        ([3, 3, 3, 3, 3], 9),\n        ([30, 13, 24, 321], 0),\n    ]\n\n    for arr, expected in examples:\n        result = solution(arr)\n        print(f\"solution({arr}) = {result} (expected {expected})\")"
+    },
+    {
+      "task_id": "HumanEval/0",
+      "entry_point": "has_close_elements",
+      "verdict": "Relevant",
+      "retrieved": [
+        "HumanEval/20",
+        "HumanEval/5",
+        "HumanEval/26"
+      ],
+      "leaked": false,
+      "passed": true,
+      "reason": "",
+      "code": "from typing import List\n\n\ndef has_close_elements(numbers: List[float], threshold: float) -> bool:\n    \"\"\"\n    Check if in the given list of numbers any two numbers are closer to each other\n    than the supplied ``threshold`` (strictly less than).\n\n    Parameters\n    ----------\n    numbers : List[float]\n        List of numeric values (int or float). Must contain at least two elements\n        to have a pair to compare.\n    threshold : float\n        Positive distance to compare against. Any pair with absolute difference\n        smaller than this value makes the function return ``True``.\n\n    Returns\n    -------\n    bool\n        ``True`` if a pair of numbers is found with distance < threshold,\n        otherwise ``False``.\n\n    Raises\n    ------\n    TypeError\n        If ``numbers`` is not a list or contains non\u2011numeric items,\n        or if ``threshold`` is not a numeric type.\n\n    Examples\n    --------\n    >>> has_close_elements([1.0, 2.0, 3.0], 0.5)\n    False\n    >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)\n    True\n    \"\"\"\n    # ---- input validation -------------------------------------------------\n    if not isinstance(numbers, list):\n        raise TypeError(\"numbers must be a list\")\n    if not isinstance(threshold, (int, float)):\n        raise TypeError(\"threshold must be a numeric type\")\n    for idx, n in enumerate(numbers):\n        if not isinstance(n, (int, float)):\n            raise TypeError(f\"Element at index {idx} is not numeric: {n!r}\")\n\n    # ---- trivial cases ----------------------------------------------------\n    if len(numbers) < 2:\n        # No pair exists, therefore cannot be \"close\"\n        return False\n\n    # ---- core algorithm ----------------------------------------------------\n    # Sorting reduces the problem to checking only adjacent elements.\n    # If any two numbers are closer than the threshold, they will be neighbours\n    # after sorting because any larger gap would be captured by a closer pair.\n    sorted_numbers = sorted(numbers)\n\n    for i in range(len(sorted_numbers) - 1):\n        if abs(sorted_numbers[i + 1] - sorted_numbers[i]) < threshold:\n            return True\n\n    return False\n\n\nif __name__ == \"__main__\":\n    # Basic sanity checks\n    print(has_close_elements([1.0, 2.0, 3.0], 0.5))          # Expected: False\n    print(has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3))  # Expected: True\n\n    # Edge cases\n    print(has_close_elements([], 1.0))                     # Expected: False (no elements)\n    print(has_close_elements([42.0], 0.1))                 # Expected: False (single element)\n    print(has_close_elements([1, 1.05, 2], 0.1))           # Expected: True (1 and 1.05 are 0.05 apart)"
+    },
+    {
+      "task_id": "HumanEval/17",
+      "entry_point": "parse_music",
+      "verdict": "Relevant",
+      "retrieved": [
+        "HumanEval/19",
+        "HumanEval/6",
+        "HumanEval/161"
+      ],
+      "leaked": false,
+      "passed": true,
+      "reason": "",
+      "code": "from typing import List\n\n\ndef parse_music(music_string: str) -> List[int]:\n    \"\"\"\n    Parse a string of ASCII\u2011encoded musical notes and return a list of beat lengths.\n\n    Legend:\n        'o'   \u2013 whole note  \u2192 4 beats\n        'o|'  \u2013 half note   \u2192 2 beats\n        '.|'  \u2013 quarter note\u2192 1 beat\n\n    Tokens are separated by whitespace; empty tokens are ignored.\n\n    Args:\n        music_string: The input string containing the notes.\n\n    Returns:\n        A list of integers, each representing the beats of the corresponding note.\n\n    Raises:\n        TypeError: If ``music_string`` is not a string.\n        ValueError: If an unknown token is encountered.\n    \"\"\"\n    if not isinstance(music_string, str):\n        raise TypeError(\"music_string must be a string\")\n\n    # Mapping from token to its beat count\n    beat_map = {\n        \"o\": 4,\n        \"o|\": 2,\n        \".|\": 1,\n    }\n\n    beats: List[int] = []\n    # Split on whitespace; filter out any empty strings that may appear\n    for token in music_string.split():\n        if token not in beat_map:\n            raise ValueError(f\"Unrecognized note token: '{token}'\")\n        beats.append(beat_map[token])\n\n    return beats\n\n\nif __name__ == \"__main__\":\n    # Example from the docstring\n    example = \"o o| .| o| o| .| .| .| .| o o\"\n    print(parse_music(example))  # [4, 2, 1, 2, 2, 1, 1, 1, 1, 4, 4]\n\n    # Additional tests\n    print(parse_music(\"o\"))                     # [4]\n    print(parse_music(\"o| .| o| .|\"))           # [2, 1, 2, 1]\n    try:\n        parse_music(\"x o|\")                     # should raise ValueError\n    except ValueError as e:\n        print(\"Caught expected error:\", e)"
+    },
+    {
+      "task_id": "HumanEval/52",
+      "entry_point": "below_threshold",
+      "verdict": "Relevant",
+      "retrieved": [
+        "HumanEval/3",
+        "HumanEval/57",
+        "HumanEval/106"
+      ],
+      "leaked": false,
+      "passed": true,
+      "reason": "",
+      "code": "from typing import List, Union\n\n\ndef below_threshold(l: List[Union[int, float]], t: Union[int, float]) -> bool:\n    \"\"\"\n    Return True if **all** numbers in the list ``l`` are strictly below the threshold ``t``.\n    \n    Parameters\n    ----------\n    l : list of int/float\n        The list of numbers to check.\n    t : int or float\n        The threshold value.\n\n    Returns\n    -------\n    bool\n        True if every element in ``l`` is < ``t``; otherwise False.\n    \n    Raises\n    ------\n    TypeError\n        If ``l`` is not a list, ``t`` is not a number, or any element of ``l`` is not a number.\n    \n    Examples\n    --------\n    >>> below_threshold([1, 2, 4, 10], 100)\n    True\n    >>> below_threshold([1, 20, 4, 10], 5)\n    False\n    \"\"\"\n    # Validate input types\n    if not isinstance(l, list):\n        raise TypeError(f\"Expected l to be a list, got {type(l).__name__}\")\n    if not isinstance(t, (int, float)):\n        raise TypeError(f\"Expected t to be a number, got {type(t).__name__}\")\n\n    # Check each element; fail fast on the first violation\n    for idx, val in enumerate(l):\n        if not isinstance(val, (int, float)):\n            raise TypeError(f\"Element at index {idx} is not a number (got {type(val).__name__})\")\n        if val >= t:\n            return False\n\n    # Empty list vacuously satisfies the condition\n    return True\n\n\nif __name__ == \"__main__\":\n    # Demonstration of expected behaviour\n    examples = [\n        ([1, 2, 4, 10], 100),\n        ([1, 20, 4, 10], 5),\n        ([], 10),                     # empty list -> True\n        ([0, -5, 3.5], 4),            # mixed int/float\n    ]\n\n    for lst, thr in examples:\n        result = below_threshold(lst, thr)\n        print(f\"below_threshold({lst}, {thr}) -> {result}\")"
+    },
+    {
+      "task_id": "HumanEval/123",
+      "entry_point": "get_odd_collatz",
+      "verdict": "Relevant",
+      "retrieved": [
+        "HumanEval/107",
+        "HumanEval/155",
+        "HumanEval/113"
+      ],
+      "leaked": false,
+      "passed": true,
+      "reason": "",
+      "code": "from typing import List\n\ndef get_odd_collatz(n: int) -> List[int]:\n    \"\"\"\n    Return a sorted list of the odd numbers appearing in the Collatz sequence\n    that starts at ``n`` and ends at 1 (inclusive).\n\n    The Collatz rule:\n        - if the current term is even \u2192 next term = term // 2\n        - if the current term is odd  \u2192 next term = 3 * term + 1\n\n    Parameters\n    ----------\n    n: int\n        Positive integer that starts the sequence.\n\n    Returns\n    -------\n    List[int]\n        Sorted list (ascending) of the odd terms in the sequence.\n\n    Raises\n    ------\n    TypeError\n        If ``n`` is not an integer.\n    ValueError\n        If ``n`` is not positive.\n\n    Examples\n    --------\n    >>> get_odd_collatz(5)\n    [1, 5]\n    >>> get_odd_collatz(3)\n    [1, 3, 5]\n    \"\"\"\n    # ---- input validation -------------------------------------------------\n    if not isinstance(n, int):\n        raise TypeError(f\"Expected int for n, got {type(n).__name__}\")\n    if n <= 0:\n        raise ValueError(\"n must be a positive integer\")\n\n    odd_set = set()\n    current = n\n\n    # ---- generate Collatz sequence ---------------------------------------\n    while True:\n        if current % 2 == 1:          # odd term \u2192 store it\n            odd_set.add(current)\n        if current == 1:              # reached the end of the sequence\n            break\n        # compute next term according to parity\n        if current % 2 == 0:\n            current //= 2\n        else:\n            current = 3 * current + 1\n\n    # ---- return sorted list -----------------------------------------------\n    return sorted(odd_set)\n\n\nif __name__ == \"__main__\":\n    # basic sanity checks\n    examples = [1, 2, 3, 5, 7, 27]\n    for val in examples:\n        result = get_odd_collatz(val)\n        print(f\"get_odd_collatz({val}) -> {result}\")"
+    }
+  ]
+}

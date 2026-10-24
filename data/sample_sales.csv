@@ -1,0 +1,501 @@
+﻿Order ID,Order Date,City,Category,Product,Quantity,Unit Price ($),Total ($),Customer Name
+1,2023-01-02,Ramallah,Clothing,T-Shirt,4,15,60,رنا عيسى
+2,2023-01-03,Jenin,Home & Kitchen,Pan Set,3,45,135,نور شاهين
+3,2023-01-04,Nablus,Home & Kitchen,Coffee Maker,3,120,360,نور شاهين
+4,2023-01-06,Bethlehem,Clothing,T-Shirt,4,15,60,ليلى حداد
+5,2023-01-07,Ramallah,Books,Novel,2,12,24,محمد عودة
+6,2023-01-08,Nablus,Electronics,Headphones,1,80,80,سارة يوسف
+7,2023-01-10,Hebron,Clothing,Shoes,4,55,220,أحمد خليل
+8,2023-01-13,Bethlehem,Books,Cookbook,1,25,25,رنا عيسى
+9,2023-01-15,Jericho,Home & Kitchen,Blender,5,60,300,ليلى حداد
+10,2023-01-16,Ramallah,Clothing,T-Shirt,2,15,30,نور شاهين
+11,2023-01-19,Nablus,Home & Kitchen,Blender,2,60,120,رنا عيسى
+12,2023-01-23,Jericho,Books,Cookbook,1,25,25,ليلى حداد
+13,2023-02-01,Jenin,Clothing,Jacket,1,70,70,محمد عودة
+14,2023-02-01,Ramallah,Clothing,Shoes,4,55,220,محمد عودة
+15,2023-02-02,Nablus,Electronics,Laptop,2,900,1800,أحمد خليل
+16,2023-02-02,Nablus,Home & Kitchen,Coffee Maker,5,120,600,يوسف نصار
+17,2023-02-03,Bethlehem,Home & Kitchen,Coffee Maker,4,120,480,ليلى حداد
+18,2023-02-13,Hebron,Home & Kitchen,Pan Set,4,45,180,أحمد خليل
+19,2023-02-14,Bethlehem,Books,Dictionary,1,30,30,سارة يوسف
+20,2023-02-14,Bethlehem,Books,Cookbook,2,25,50,يوسف نصار
+21,2023-02-16,Jericho,Electronics,Headphones,3,80,240,محمد عودة
+22,2023-02-16,Ramallah,Clothing,T-Shirt,5,15,75,أحمد خليل
+23,2023-02-16,Bethlehem,Electronics,Laptop,3,900,2700,نور شاهين
+24,2023-02-21,Ramallah,Clothing,Shoes,2,55,110,سارة يوسف
+25,2023-02-22,Hebron,Home & Kitchen,Pan Set,3,45,135,سارة يوسف
+26,2023-02-22,Jericho,Books,Novel,5,12,60,خالد سمارة
+27,2023-02-22,Jenin,Home & Kitchen,Blender,5,60,300,أحمد خليل
+28,2023-02-23,Ramallah,Clothing,Jacket,5,70,350,سارة يوسف
+29,2023-02-24,Ramallah,Electronics,Phone,2,600,1200,رنا عيسى
+30,2023-02-25,Jericho,Electronics,Laptop,4,900,3600,رنا عيسى
+31,2023-02-25,Jenin,Clothing,Shoes,3,55,165,نور شاهين
+32,2023-02-28,Jenin,Electronics,Laptop,1,900,900,سارة يوسف
+33,2023-02-28,Jericho,Home & Kitchen,Blender,1,60,60,سارة يوسف
+34,2023-03-04,Ramallah,Books,Cookbook,2,25,50,نور شاهين
+35,2023-03-05,Jericho,Books,Novel,3,12,36,سارة يوسف
+36,2023-03-05,Jenin,Clothing,Shoes,2,55,110,رنا عيسى
+37,2023-03-05,Nablus,Clothing,Shoes,5,55,275,محمد عودة
+38,2023-03-07,Jenin,Books,Cookbook,3,25,75,سارة يوسف
+39,2023-03-09,Jericho,Home & Kitchen,Coffee Maker,5,120,600,خالد سمارة
+40,2023-03-10,Bethlehem,Electronics,Laptop,1,900,900,سارة يوسف
+41,2023-03-10,Hebron,Clothing,Shoes,3,55,165,خالد سمارة
+42,2023-03-11,Ramallah,Electronics,Phone,4,600,2400,خالد سمارة
+43,2023-03-12,Nablus,Clothing,T-Shirt,3,15,45,نور شاهين
+44,2023-03-13,Jenin,Home & Kitchen,Blender,3,60,180,يوسف نصار
+45,2023-03-16,Jenin,Electronics,Phone,5,600,3000,سارة يوسف
+46,2023-03-16,Nablus,Clothing,Shoes,5,55,275,نور شاهين
+47,2023-03-17,Nablus,Clothing,Shoes,3,55,165,رنا عيسى
+48,2023-03-17,Jenin,Electronics,Laptop,2,900,1800,يوسف نصار
+49,2023-03-17,Hebron,Books,Cookbook,5,25,125,خالد سمارة
+50,2023-03-18,Jericho,Books,Cookbook,5,25,125,محمد عودة
+51,2023-03-19,Ramallah,Books,Dictionary,1,30,30,أحمد خليل
+52,2023-03-22,Bethlehem,Books,Dictionary,2,30,60,محمد عودة
+53,2023-03-23,Nablus,Electronics,Phone,2,600,1200,خالد سمارة
+54,2023-03-23,Hebron,Home & Kitchen,Pan Set,3,45,135,نور شاهين
+55,2023-03-25,Jericho,Clothing,T-Shirt,3,15,45,خالد سمارة
+56,2023-03-27,Jenin,Clothing,T-Shirt,4,15,60,محمد عودة
+57,2023-03-29,Nablus,Books,Novel,5,12,60,محمد عودة
+58,2023-03-29,Bethlehem,Clothing,Jacket,5,70,350,ليلى حداد
+59,2023-03-29,Ramallah,Home & Kitchen,Coffee Maker,1,120,120,يوسف نصار
+60,2023-03-29,Hebron,Electronics,Headphones,2,80,160,يوسف نصار
+61,2023-03-31,Jericho,Home & Kitchen,Pan Set,3,45,135,سارة يوسف
+62,2023-04-04,Ramallah,Clothing,Shoes,5,55,275,أحمد خليل
+63,2023-04-04,Bethlehem,Clothing,T-Shirt,4,15,60,رنا عيسى
+64,2023-04-04,Nablus,Books,Novel,4,12,48,خالد سمارة
+65,2023-04-05,Hebron,Books,Novel,3,12,36,يوسف نصار
+66,2023-04-06,Bethlehem,Clothing,Jacket,4,70,280,نور شاهين
+67,2023-04-10,Jenin,Books,Cookbook,3,25,75,رنا عيسى
+68,2023-04-11,Jericho,Home & Kitchen,Coffee Maker,5,120,600,ليلى حداد
+69,2023-04-12,Jericho,Electronics,Headphones,5,80,400,ليلى حداد
+70,2023-04-12,Ramallah,Home & Kitchen,Coffee Maker,2,120,240,يوسف نصار
+71,2023-04-13,Hebron,Clothing,T-Shirt,2,15,30,محمد عودة
+72,2023-04-15,Ramallah,Home & Kitchen,Pan Set,5,45,225,أحمد خليل
+73,2023-04-16,Jenin,Electronics,Laptop,3,900,2700,سارة يوسف
+74,2023-04-21,Jericho,Books,Novel,3,12,36,رنا عيسى
+75,2023-04-22,Jenin,Clothing,Jacket,2,70,140,نور شاهين
+76,2023-04-22,Bethlehem,Books,Cookbook,3,25,75,سارة يوسف
+77,2023-04-22,Nablus,Clothing,Shoes,3,55,165,أحمد خليل
+78,2023-04-24,Ramallah,Home & Kitchen,Coffee Maker,3,120,360,أحمد خليل
+79,2023-04-24,Ramallah,Books,Dictionary,5,30,150,ليلى حداد
+80,2023-04-27,Jenin,Home & Kitchen,Pan Set,4,45,180,رنا عيسى
+81,2023-04-28,Nablus,Books,Novel,2,12,24,خالد سمارة
+82,2023-04-29,Hebron,Home & Kitchen,Coffee Maker,5,120,600,أحمد خليل
+83,2023-05-01,Jenin,Clothing,T-Shirt,3,15,45,يوسف نصار
+84,2023-05-01,Jericho,Books,Novel,5,12,60,ليلى حداد
+85,2023-05-04,Jericho,Clothing,T-Shirt,1,15,15,محمد عودة
+86,2023-05-09,Bethlehem,Home & Kitchen,Pan Set,1,45,45,نور شاهين
+87,2023-05-09,Ramallah,Home & Kitchen,Pan Set,5,45,225,محمد عودة
+88,2023-05-10,Ramallah,Home & Kitchen,Coffee Maker,4,120,480,نور شاهين
+89,2023-05-11,Jenin,Electronics,Headphones,4,80,320,رنا عيسى
+90,2023-05-13,Bethlehem,Electronics,Phone,5,600,3000,رنا عيسى
+91,2023-05-13,Ramallah,Books,Dictionary,1,30,30,محمد عودة
+92,2023-05-15,Jericho,Electronics,Phone,3,600,1800,خالد سمارة
+93,2023-05-17,Hebron,Electronics,Phone,5,600,3000,محمد عودة
+94,2023-05-18,Ramallah,Books,Cookbook,2,25,50,رنا عيسى
+95,2023-05-19,Ramallah,Electronics,Headphones,4,80,320,يوسف نصار
+96,2023-05-19,Jericho,Electronics,Phone,2,600,1200,نور شاهين
+97,2023-05-21,Nablus,Electronics,Headphones,5,80,400,ليلى حداد
+98,2023-05-22,Ramallah,Books,Novel,1,12,12,محمد عودة
+99,2023-05-22,Jericho,Clothing,Jacket,4,70,280,محمد عودة
+100,2023-05-23,Ramallah,Electronics,Headphones,5,80,400,خالد سمارة
+101,2023-05-23,Jenin,Clothing,Shoes,5,55,275,يوسف نصار
+102,2023-05-24,Bethlehem,Books,Novel,3,12,36,ليلى حداد
+103,2023-05-27,Jericho,Books,Novel,2,12,24,أحمد خليل
+104,2023-05-28,Jenin,Home & Kitchen,Blender,1,60,60,رنا عيسى
+105,2023-05-28,Bethlehem,Clothing,Shoes,5,55,275,أحمد خليل
+106,2023-05-30,Jenin,Electronics,Phone,5,600,3000,خالد سمارة
+107,2023-06-01,Nablus,Electronics,Phone,2,600,1200,يوسف نصار
+108,2023-06-01,Jericho,Clothing,Jacket,5,70,350,سارة يوسف
+109,2023-06-02,Hebron,Books,Dictionary,4,30,120,رنا عيسى
+110,2023-06-02,Hebron,Clothing,T-Shirt,5,15,75,محمد عودة
+111,2023-06-06,Jenin,Home & Kitchen,Coffee Maker,5,120,600,أحمد خليل
+112,2023-06-07,Nablus,Clothing,Jacket,5,70,350,نور شاهين
+113,2023-06-07,Jericho,Books,Dictionary,2,30,60,خالد سمارة
+114,2023-06-08,Ramallah,Clothing,T-Shirt,2,15,30,أحمد خليل
+115,2023-06-10,Jericho,Electronics,Phone,4,600,2400,نور شاهين
+116,2023-06-11,Jenin,Home & Kitchen,Blender,3,60,180,سارة يوسف
+117,2023-06-11,Bethlehem,Books,Cookbook,4,25,100,ليلى حداد
+118,2023-06-16,Jericho,Home & Kitchen,Blender,2,60,120,يوسف نصار
+119,2023-06-16,Jericho,Books,Dictionary,3,30,90,محمد عودة
+120,2023-06-16,Jericho,Clothing,Shoes,4,55,220,رنا عيسى
+121,2023-06-17,Jericho,Books,Cookbook,3,25,75,ليلى حداد
+122,2023-06-17,Ramallah,Home & Kitchen,Coffee Maker,5,120,600,يوسف نصار
+123,2023-06-18,Jericho,Home & Kitchen,Blender,3,60,180,رنا عيسى
+124,2023-06-28,Nablus,Electronics,Headphones,1,80,80,أحمد خليل
+125,2023-06-29,Hebron,Clothing,Jacket,5,70,350,يوسف نصار
+126,2023-06-29,Jericho,Clothing,T-Shirt,5,15,75,ليلى حداد
+127,2023-06-29,Hebron,Books,Cookbook,5,25,125,سارة يوسف
+128,2023-07-01,Jericho,Books,Novel,2,12,24,رنا عيسى
+129,2023-07-03,Nablus,Electronics,Laptop,5,900,4500,ليلى حداد
+130,2023-07-06,Hebron,Electronics,Phone,4,600,2400,ليلى حداد
+131,2023-07-11,Jenin,Books,Cookbook,5,25,125,خالد سمارة
+132,2023-07-13,Jenin,Electronics,Laptop,4,900,3600,أحمد خليل
+133,2023-07-14,Bethlehem,Clothing,T-Shirt,5,15,75,نور شاهين
+134,2023-07-15,Bethlehem,Electronics,Phone,3,600,1800,محمد عودة
+135,2023-07-16,Hebron,Clothing,Shoes,4,55,220,يوسف نصار
+136,2023-07-16,Bethlehem,Home & Kitchen,Blender,3,60,180,سارة يوسف
+137,2023-07-18,Bethlehem,Home & Kitchen,Pan Set,5,45,225,نور شاهين
+138,2023-07-24,Jericho,Clothing,T-Shirt,1,15,15,نور شاهين
+139,2023-07-26,Hebron,Electronics,Laptop,1,900,900,يوسف نصار
+140,2023-07-29,Hebron,Home & Kitchen,Coffee Maker,2,120,240,يوسف نصار
+141,2023-07-30,Jenin,Home & Kitchen,Pan Set,1,45,45,سارة يوسف
+142,2023-08-02,Nablus,Home & Kitchen,Blender,1,60,60,ليلى حداد
+143,2023-08-05,Bethlehem,Clothing,Shoes,3,55,165,رنا عيسى
+144,2023-08-06,Nablus,Books,Cookbook,4,25,100,يوسف نصار
+145,2023-08-06,Hebron,Home & Kitchen,Blender,3,60,180,يوسف نصار
+146,2023-08-07,Bethlehem,Books,Novel,2,12,24,أحمد خليل
+147,2023-08-08,Nablus,Home & Kitchen,Pan Set,4,45,180,سارة يوسف
+148,2023-08-08,Jenin,Clothing,Shoes,3,55,165,يوسف نصار
+149,2023-08-13,Bethlehem,Clothing,T-Shirt,2,15,30,رنا عيسى
+150,2023-08-15,Hebron,Books,Dictionary,2,30,60,رنا عيسى
+151,2023-08-19,Ramallah,Clothing,Jacket,1,70,70,ليلى حداد
+152,2023-08-19,Jericho,Home & Kitchen,Blender,2,60,120,نور شاهين
+153,2023-08-24,Nablus,Clothing,T-Shirt,3,15,45,يوسف نصار
+154,2023-08-26,Bethlehem,Books,Dictionary,3,30,90,يوسف نصار
+155,2023-08-27,Bethlehem,Electronics,Phone,3,600,1800,رنا عيسى
+156,2023-08-28,Jenin,Clothing,Jacket,2,70,140,يوسف نصار
+157,2023-08-28,Jericho,Home & Kitchen,Pan Set,5,45,225,رنا عيسى
+158,2023-08-29,Jenin,Home & Kitchen,Blender,3,60,180,سارة يوسف
+159,2023-08-30,Nablus,Electronics,Laptop,3,900,2700,محمد عودة
+160,2023-08-31,Nablus,Home & Kitchen,Coffee Maker,5,120,600,خالد سمارة
+161,2023-09-02,Jenin,Clothing,T-Shirt,1,15,15,ليلى حداد
+162,2023-09-02,Bethlehem,Books,Dictionary,5,30,150,سارة يوسف
+163,2023-09-02,Hebron,Home & Kitchen,Coffee Maker,2,120,240,محمد عودة
+164,2023-09-04,Jenin,Books,Novel,1,12,12,رنا عيسى
+165,2023-09-04,Ramallah,Clothing,Shoes,3,55,165,أحمد خليل
+166,2023-09-04,Jenin,Clothing,Jacket,1,70,70,أحمد خليل
+167,2023-09-04,Bethlehem,Clothing,T-Shirt,2,15,30,أحمد خليل
+168,2023-09-06,Ramallah,Books,Cookbook,2,25,50,سارة يوسف
+169,2023-09-11,Hebron,Clothing,Jacket,1,70,70,خالد سمارة
+170,2023-09-12,Nablus,Electronics,Phone,4,600,2400,نور شاهين
+171,2023-09-13,Bethlehem,Electronics,Laptop,2,900,1800,خالد سمارة
+172,2023-09-15,Hebron,Electronics,Laptop,4,900,3600,أحمد خليل
+173,2023-09-15,Jenin,Clothing,Shoes,4,55,220,ليلى حداد
+174,2023-09-16,Jericho,Electronics,Phone,1,600,600,أحمد خليل
+175,2023-09-16,Bethlehem,Books,Novel,1,12,12,نور شاهين
+176,2023-09-21,Bethlehem,Books,Dictionary,4,30,120,محمد عودة
+177,2023-09-25,Nablus,Clothing,Shoes,3,55,165,يوسف نصار
+178,2023-09-25,Ramallah,Home & Kitchen,Pan Set,2,45,90,سارة يوسف
+179,2023-09-28,Nablus,Electronics,Laptop,2,900,1800,سارة يوسف
+180,2023-09-29,Jericho,Home & Kitchen,Pan Set,4,45,180,سارة يوسف
+181,2023-09-29,Jenin,Electronics,Laptop,4,900,3600,سارة يوسف
+182,2023-09-30,Nablus,Clothing,Jacket,1,70,70,يوسف نصار
+183,2023-10-01,Jericho,Home & Kitchen,Blender,5,60,300,أحمد خليل
+184,2023-10-02,Nablus,Books,Novel,1,12,12,خالد سمارة
+185,2023-10-06,Bethlehem,Books,Dictionary,4,30,120,نور شاهين
+186,2023-10-07,Ramallah,Home & Kitchen,Blender,3,60,180,محمد عودة
+187,2023-10-07,Bethlehem,Electronics,Phone,4,600,2400,نور شاهين
+188,2023-10-09,Jenin,Electronics,Headphones,1,80,80,نور شاهين
+189,2023-10-10,Ramallah,Books,Cookbook,4,25,100,رنا عيسى
+190,2023-10-15,Jenin,Books,Cookbook,1,25,25,ليلى حداد
+191,2023-10-16,Bethlehem,Books,Dictionary,5,30,150,محمد عودة
+192,2023-10-16,Hebron,Books,Dictionary,4,30,120,أحمد خليل
+193,2023-10-18,Jericho,Home & Kitchen,Coffee Maker,2,120,240,يوسف نصار
+194,2023-10-18,Nablus,Home & Kitchen,Pan Set,5,45,225,رنا عيسى
+195,2023-10-21,Nablus,Clothing,Shoes,3,55,165,ليلى حداد
+196,2023-10-22,Ramallah,Books,Dictionary,4,30,120,أحمد خليل
+197,2023-10-22,Bethlehem,Electronics,Headphones,5,80,400,خالد سمارة
+198,2023-10-22,Ramallah,Home & Kitchen,Blender,1,60,60,ليلى حداد
+199,2023-10-26,Jericho,Electronics,Laptop,3,900,2700,يوسف نصار
+200,2023-10-28,Nablus,Home & Kitchen,Blender,4,60,240,ليلى حداد
+201,2023-10-30,Jericho,Electronics,Headphones,5,80,400,أحمد خليل
+202,2023-10-30,Nablus,Clothing,Jacket,3,70,210,خالد سمارة
+203,2023-11-02,Bethlehem,Electronics,Phone,3,600,1800,نور شاهين
+204,2023-11-02,Bethlehem,Books,Dictionary,5,30,150,خالد سمارة
+205,2023-11-04,Jenin,Home & Kitchen,Coffee Maker,5,120,600,محمد عودة
+206,2023-11-04,Ramallah,Electronics,Headphones,1,80,80,خالد سمارة
+207,2023-11-04,Ramallah,Electronics,Headphones,1,80,80,رنا عيسى
+208,2023-11-06,Nablus,Electronics,Headphones,5,80,400,يوسف نصار
+209,2023-11-08,Nablus,Books,Novel,1,12,12,محمد عودة
+210,2023-11-08,Jericho,Clothing,Jacket,3,70,210,ليلى حداد
+211,2023-11-09,Nablus,Electronics,Headphones,1,80,80,ليلى حداد
+212,2023-11-11,Jenin,Clothing,Jacket,2,70,140,سارة يوسف
+213,2023-11-12,Bethlehem,Books,Novel,1,12,12,نور شاهين
+214,2023-11-17,Jericho,Home & Kitchen,Blender,2,60,120,نور شاهين
+215,2023-11-18,Bethlehem,Electronics,Laptop,5,900,4500,محمد عودة
+216,2023-11-21,Jericho,Books,Cookbook,5,25,125,يوسف نصار
+217,2023-11-21,Ramallah,Home & Kitchen,Coffee Maker,1,120,120,يوسف نصار
+218,2023-11-23,Hebron,Clothing,T-Shirt,1,15,15,نور شاهين
+219,2023-11-26,Hebron,Clothing,Jacket,2,70,140,رنا عيسى
+220,2023-12-02,Jericho,Electronics,Laptop,4,900,3600,خالد سمارة
+221,2023-12-02,Jericho,Books,Novel,2,12,24,نور شاهين
+222,2023-12-03,Jenin,Books,Cookbook,4,25,100,أحمد خليل
+223,2023-12-07,Hebron,Books,Cookbook,4,25,100,خالد سمارة
+224,2023-12-08,Nablus,Home & Kitchen,Pan Set,1,45,45,رنا عيسى
+225,2023-12-08,Nablus,Clothing,Jacket,5,70,350,سارة يوسف
+226,2023-12-11,Nablus,Electronics,Phone,3,600,1800,نور شاهين
+227,2023-12-13,Nablus,Electronics,Headphones,5,80,400,ليلى حداد
+228,2023-12-14,Ramallah,Clothing,T-Shirt,2,15,30,سارة يوسف
+229,2023-12-15,Hebron,Home & Kitchen,Coffee Maker,2,120,240,سارة يوسف
+230,2023-12-15,Jericho,Clothing,T-Shirt,3,15,45,رنا عيسى
+231,2023-12-18,Jenin,Clothing,Shoes,3,55,165,نور شاهين
+232,2023-12-18,Bethlehem,Books,Novel,5,12,60,رنا عيسى
+233,2023-12-20,Jenin,Clothing,Shoes,1,55,55,رنا عيسى
+234,2023-12-20,Hebron,Clothing,T-Shirt,1,15,15,سارة يوسف
+235,2023-12-20,Hebron,Electronics,Phone,1,600,600,خالد سمارة
+236,2023-12-21,Nablus,Home & Kitchen,Coffee Maker,3,120,360,يوسف نصار
+237,2023-12-21,Jericho,Books,Dictionary,3,30,90,نور شاهين
+238,2023-12-22,Ramallah,Books,Dictionary,3,30,90,رنا عيسى
+239,2023-12-23,Nablus,Home & Kitchen,Blender,5,60,300,يوسف نصار
+240,2023-12-25,Ramallah,Home & Kitchen,Coffee Maker,2,120,240,ليلى حداد
+241,2023-12-25,Jericho,Clothing,Shoes,1,55,55,أحمد خليل
+242,2023-12-25,Jenin,Home & Kitchen,Coffee Maker,3,120,360,ليلى حداد
+243,2023-12-27,Jenin,Home & Kitchen,Blender,4,60,240,ليلى حداد
+244,2023-12-27,Bethlehem,Clothing,Jacket,5,70,350,محمد عودة
+245,2023-12-29,Nablus,Books,Dictionary,2,30,60,محمد عودة
+246,2024-01-02,Jericho,Clothing,Shoes,2,55,110,سارة يوسف
+247,2024-01-02,Ramallah,Clothing,Shoes,3,55,165,محمد عودة
+248,2024-01-06,Nablus,Clothing,Jacket,2,70,140,ليلى حداد
+249,2024-01-07,Jenin,Electronics,Headphones,3,80,240,رنا عيسى
+250,2024-01-07,Jenin,Home & Kitchen,Coffee Maker,4,120,480,نور شاهين
+251,2024-01-12,Ramallah,Home & Kitchen,Coffee Maker,4,120,480,خالد سمارة
+252,2024-01-15,Jenin,Home & Kitchen,Blender,1,60,60,محمد عودة
+253,2024-01-15,Jenin,Home & Kitchen,Blender,1,60,60,ليلى حداد
+254,2024-01-16,Ramallah,Electronics,Headphones,5,80,400,يوسف نصار
+255,2024-01-17,Jenin,Clothing,Shoes,1,55,55,رنا عيسى
+256,2024-01-18,Hebron,Home & Kitchen,Pan Set,1,45,45,سارة يوسف
+257,2024-01-18,Nablus,Books,Cookbook,5,25,125,ليلى حداد
+258,2024-01-24,Ramallah,Books,Dictionary,4,30,120,أحمد خليل
+259,2024-01-26,Jenin,Home & Kitchen,Blender,5,60,300,خالد سمارة
+260,2024-01-27,Nablus,Electronics,Phone,2,600,1200,نور شاهين
+261,2024-01-28,Jericho,Clothing,Shoes,5,55,275,محمد عودة
+262,2024-01-29,Jenin,Clothing,Shoes,1,55,55,رنا عيسى
+263,2024-01-30,Jenin,Books,Dictionary,4,30,120,يوسف نصار
+264,2024-01-30,Jericho,Clothing,T-Shirt,1,15,15,خالد سمارة
+265,2024-01-31,Ramallah,Electronics,Phone,2,600,1200,رنا عيسى
+266,2024-01-31,Jericho,Home & Kitchen,Coffee Maker,4,120,480,نور شاهين
+267,2024-02-02,Bethlehem,Books,Cookbook,5,25,125,محمد عودة
+268,2024-02-02,Hebron,Clothing,T-Shirt,2,15,30,سارة يوسف
+269,2024-02-02,Nablus,Electronics,Headphones,5,80,400,محمد عودة
+270,2024-02-03,Bethlehem,Electronics,Headphones,4,80,320,أحمد خليل
+271,2024-02-03,Jericho,Home & Kitchen,Pan Set,4,45,180,محمد عودة
+272,2024-02-04,Bethlehem,Home & Kitchen,Blender,3,60,180,نور شاهين
+273,2024-02-07,Jenin,Home & Kitchen,Pan Set,3,45,135,نور شاهين
+274,2024-02-10,Bethlehem,Clothing,Shoes,3,55,165,رنا عيسى
+275,2024-02-10,Nablus,Electronics,Headphones,5,80,400,نور شاهين
+276,2024-02-11,Ramallah,Books,Novel,3,12,36,أحمد خليل
+277,2024-02-11,Hebron,Clothing,Shoes,3,55,165,خالد سمارة
+278,2024-02-12,Bethlehem,Books,Dictionary,4,30,120,سارة يوسف
+279,2024-02-13,Hebron,Home & Kitchen,Blender,1,60,60,رنا عيسى
+280,2024-02-13,Hebron,Books,Dictionary,1,30,30,خالد سمارة
+281,2024-02-13,Jenin,Clothing,T-Shirt,5,15,75,سارة يوسف
+282,2024-02-15,Jenin,Home & Kitchen,Coffee Maker,2,120,240,رنا عيسى
+283,2024-02-15,Bethlehem,Electronics,Laptop,2,900,1800,رنا عيسى
+284,2024-02-17,Ramallah,Home & Kitchen,Coffee Maker,4,120,480,ليلى حداد
+285,2024-02-18,Bethlehem,Electronics,Headphones,5,80,400,خالد سمارة
+286,2024-02-19,Jenin,Electronics,Phone,2,600,1200,نور شاهين
+287,2024-02-20,Nablus,Electronics,Phone,3,600,1800,خالد سمارة
+288,2024-02-21,Jericho,Books,Dictionary,2,30,60,نور شاهين
+289,2024-02-23,Ramallah,Home & Kitchen,Pan Set,5,45,225,رنا عيسى
+290,2024-02-23,Hebron,Clothing,Jacket,4,70,280,خالد سمارة
+291,2024-02-23,Nablus,Clothing,T-Shirt,4,15,60,نور شاهين
+292,2024-02-23,Nablus,Books,Novel,3,12,36,يوسف نصار
+293,2024-02-26,Jericho,Clothing,T-Shirt,2,15,30,سارة يوسف
+294,2024-02-26,Jenin,Books,Cookbook,4,25,100,أحمد خليل
+295,2024-02-27,Jenin,Clothing,T-Shirt,5,15,75,نور شاهين
+296,2024-02-28,Ramallah,Home & Kitchen,Pan Set,4,45,180,محمد عودة
+297,2024-02-29,Bethlehem,Electronics,Phone,5,600,3000,يوسف نصار
+298,2024-02-29,Ramallah,Home & Kitchen,Coffee Maker,5,120,600,رنا عيسى
+299,2024-02-29,Hebron,Electronics,Phone,5,600,3000,ليلى حداد
+300,2024-03-01,Bethlehem,Books,Cookbook,2,25,50,محمد عودة
+301,2024-03-01,Nablus,Books,Dictionary,2,30,60,سارة يوسف
+302,2024-03-11,Jericho,Electronics,Headphones,2,80,160,محمد عودة
+303,2024-03-15,Ramallah,Electronics,Headphones,3,80,240,محمد عودة
+304,2024-03-16,Hebron,Clothing,Jacket,3,70,210,أحمد خليل
+305,2024-03-16,Hebron,Books,Novel,4,12,48,نور شاهين
+306,2024-03-16,Bethlehem,Electronics,Phone,5,600,3000,يوسف نصار
+307,2024-03-18,Jericho,Clothing,Shoes,5,55,275,خالد سمارة
+308,2024-03-20,Bethlehem,Electronics,Headphones,1,80,80,محمد عودة
+309,2024-03-22,Ramallah,Home & Kitchen,Blender,2,60,120,يوسف نصار
+310,2024-03-22,Hebron,Electronics,Phone,1,600,600,خالد سمارة
+311,2024-03-22,Bethlehem,Books,Dictionary,1,30,30,يوسف نصار
+312,2024-03-23,Hebron,Electronics,Laptop,4,900,3600,أحمد خليل
+313,2024-03-24,Nablus,Books,Novel,2,12,24,سارة يوسف
+314,2024-03-24,Bethlehem,Electronics,Headphones,1,80,80,رنا عيسى
+315,2024-03-25,Hebron,Clothing,T-Shirt,3,15,45,خالد سمارة
+316,2024-03-28,Ramallah,Home & Kitchen,Blender,5,60,300,رنا عيسى
+317,2024-03-29,Nablus,Books,Dictionary,4,30,120,نور شاهين
+318,2024-03-31,Nablus,Home & Kitchen,Blender,1,60,60,سارة يوسف
+319,2024-04-01,Jericho,Home & Kitchen,Blender,4,60,240,محمد عودة
+320,2024-04-02,Bethlehem,Electronics,Laptop,1,900,900,نور شاهين
+321,2024-04-04,Jericho,Home & Kitchen,Coffee Maker,2,120,240,خالد سمارة
+322,2024-04-04,Hebron,Clothing,Shoes,2,55,110,نور شاهين
+323,2024-04-04,Jericho,Books,Cookbook,1,25,25,محمد عودة
+324,2024-04-04,Jenin,Books,Dictionary,4,30,120,خالد سمارة
+325,2024-04-05,Jenin,Home & Kitchen,Coffee Maker,3,120,360,نور شاهين
+326,2024-04-05,Bethlehem,Clothing,T-Shirt,5,15,75,محمد عودة
+327,2024-04-05,Jericho,Home & Kitchen,Coffee Maker,5,120,600,ليلى حداد
+328,2024-04-06,Jenin,Clothing,T-Shirt,5,15,75,خالد سمارة
+329,2024-04-06,Jenin,Books,Novel,3,12,36,خالد سمارة
+330,2024-04-07,Jericho,Clothing,Shoes,1,55,55,يوسف نصار
+331,2024-04-09,Jenin,Electronics,Headphones,3,80,240,محمد عودة
+332,2024-04-10,Hebron,Home & Kitchen,Blender,4,60,240,خالد سمارة
+333,2024-04-10,Hebron,Electronics,Phone,3,600,1800,سارة يوسف
+334,2024-04-12,Jenin,Clothing,T-Shirt,5,15,75,رنا عيسى
+335,2024-04-12,Jericho,Electronics,Headphones,4,80,320,يوسف نصار
+336,2024-04-13,Ramallah,Electronics,Laptop,3,900,2700,خالد سمارة
+337,2024-04-14,Bethlehem,Electronics,Laptop,4,900,3600,خالد سمارة
+338,2024-04-15,Jericho,Home & Kitchen,Pan Set,3,45,135,يوسف نصار
+339,2024-04-18,Nablus,Clothing,T-Shirt,2,15,30,خالد سمارة
+340,2024-04-20,Jericho,Books,Dictionary,5,30,150,رنا عيسى
+341,2024-04-21,Jenin,Home & Kitchen,Blender,2,60,120,سارة يوسف
+342,2024-04-21,Jericho,Home & Kitchen,Coffee Maker,4,120,480,يوسف نصار
+343,2024-04-22,Hebron,Home & Kitchen,Blender,3,60,180,نور شاهين
+344,2024-04-22,Hebron,Electronics,Headphones,4,80,320,ليلى حداد
+345,2024-04-23,Ramallah,Clothing,Shoes,5,55,275,خالد سمارة
+346,2024-04-23,Ramallah,Clothing,Shoes,1,55,55,يوسف نصار
+347,2024-04-25,Nablus,Books,Cookbook,3,25,75,أحمد خليل
+348,2024-04-27,Hebron,Electronics,Headphones,5,80,400,ليلى حداد
+349,2024-04-28,Bethlehem,Clothing,Shoes,4,55,220,أحمد خليل
+350,2024-04-29,Hebron,Home & Kitchen,Blender,5,60,300,رنا عيسى
+351,2024-04-29,Bethlehem,Books,Cookbook,2,25,50,أحمد خليل
+352,2024-05-01,Jericho,Electronics,Phone,4,600,2400,ليلى حداد
+353,2024-05-02,Hebron,Electronics,Phone,4,600,2400,سارة يوسف
+354,2024-05-05,Hebron,Home & Kitchen,Coffee Maker,4,120,480,يوسف نصار
+355,2024-05-09,Jenin,Electronics,Laptop,4,900,3600,رنا عيسى
+356,2024-05-12,Nablus,Clothing,Jacket,2,70,140,سارة يوسف
+357,2024-05-14,Bethlehem,Clothing,T-Shirt,4,15,60,أحمد خليل
+358,2024-05-20,Jenin,Electronics,Phone,5,600,3000,رنا عيسى
+359,2024-05-24,Bethlehem,Home & Kitchen,Pan Set,3,45,135,ليلى حداد
+360,2024-05-27,Jericho,Home & Kitchen,Coffee Maker,4,120,480,أحمد خليل
+361,2024-05-31,Jericho,Clothing,Jacket,2,70,140,نور شاهين
+362,2024-06-03,Jericho,Electronics,Headphones,3,80,240,ليلى حداد
+363,2024-06-03,Hebron,Home & Kitchen,Pan Set,4,45,180,خالد سمارة
+364,2024-06-03,Bethlehem,Electronics,Phone,4,600,2400,أحمد خليل
+365,2024-06-07,Jericho,Books,Dictionary,2,30,60,سارة يوسف
+366,2024-06-07,Nablus,Books,Cookbook,5,25,125,خالد سمارة
+367,2024-06-11,Hebron,Books,Dictionary,4,30,120,أحمد خليل
+368,2024-06-12,Hebron,Clothing,Shoes,2,55,110,خالد سمارة
+369,2024-06-15,Jenin,Books,Cookbook,2,25,50,خالد سمارة
+370,2024-06-18,Bethlehem,Home & Kitchen,Pan Set,5,45,225,نور شاهين
+371,2024-06-19,Hebron,Books,Cookbook,4,25,100,خالد سمارة
+372,2024-06-22,Ramallah,Books,Dictionary,3,30,90,سارة يوسف
+373,2024-06-25,Ramallah,Clothing,Shoes,2,55,110,أحمد خليل
+374,2024-06-26,Jericho,Home & Kitchen,Blender,3,60,180,يوسف نصار
+375,2024-06-27,Nablus,Books,Dictionary,2,30,60,محمد عودة
+376,2024-06-27,Jericho,Clothing,T-Shirt,3,15,45,محمد عودة
+377,2024-06-28,Jenin,Books,Novel,1,12,12,يوسف نصار
+378,2024-07-01,Nablus,Electronics,Laptop,4,900,3600,أحمد خليل
+379,2024-07-02,Jericho,Home & Kitchen,Coffee Maker,5,120,600,خالد سمارة
+380,2024-07-03,Jericho,Electronics,Phone,3,600,1800,يوسف نصار
+381,2024-07-03,Nablus,Clothing,T-Shirt,3,15,45,نور شاهين
+382,2024-07-08,Ramallah,Electronics,Laptop,4,900,3600,يوسف نصار
+383,2024-07-09,Nablus,Books,Cookbook,1,25,25,خالد سمارة
+384,2024-07-09,Ramallah,Electronics,Headphones,1,80,80,أحمد خليل
+385,2024-07-10,Ramallah,Home & Kitchen,Pan Set,5,45,225,يوسف نصار
+386,2024-07-10,Ramallah,Electronics,Laptop,3,900,2700,ليلى حداد
+387,2024-07-10,Jenin,Electronics,Phone,5,600,3000,سارة يوسف
+388,2024-07-17,Jericho,Home & Kitchen,Blender,2,60,120,محمد عودة
+389,2024-07-17,Ramallah,Home & Kitchen,Pan Set,5,45,225,محمد عودة
+390,2024-07-18,Ramallah,Books,Dictionary,1,30,30,سارة يوسف
+391,2024-07-19,Hebron,Home & Kitchen,Pan Set,5,45,225,ليلى حداد
+392,2024-07-19,Ramallah,Books,Novel,2,12,24,نور شاهين
+393,2024-07-19,Nablus,Books,Cookbook,3,25,75,ليلى حداد
+394,2024-07-20,Jericho,Electronics,Headphones,1,80,80,يوسف نصار
+395,2024-07-20,Jenin,Clothing,T-Shirt,3,15,45,ليلى حداد
+396,2024-07-21,Nablus,Clothing,Shoes,2,55,110,رنا عيسى
+397,2024-07-23,Ramallah,Electronics,Headphones,2,80,160,ليلى حداد
+398,2024-07-24,Ramallah,Home & Kitchen,Coffee Maker,4,120,480,يوسف نصار
+399,2024-07-28,Bethlehem,Clothing,Shoes,5,55,275,ليلى حداد
+400,2024-07-29,Jericho,Electronics,Phone,3,600,1800,نور شاهين
+401,2024-07-29,Jenin,Books,Cookbook,5,25,125,محمد عودة
+402,2024-07-30,Ramallah,Books,Cookbook,4,25,100,أحمد خليل
+403,2024-07-31,Ramallah,Electronics,Laptop,1,900,900,يوسف نصار
+404,2024-08-02,Nablus,Electronics,Headphones,1,80,80,ليلى حداد
+405,2024-08-03,Jericho,Electronics,Headphones,2,80,160,نور شاهين
+406,2024-08-06,Jericho,Clothing,T-Shirt,5,15,75,رنا عيسى
+407,2024-08-08,Ramallah,Books,Novel,4,12,48,رنا عيسى
+408,2024-08-10,Hebron,Books,Dictionary,4,30,120,سارة يوسف
+409,2024-08-11,Ramallah,Home & Kitchen,Pan Set,3,45,135,خالد سمارة
+410,2024-08-12,Ramallah,Books,Cookbook,2,25,50,ليلى حداد
+411,2024-08-14,Nablus,Clothing,Jacket,4,70,280,سارة يوسف
+412,2024-08-15,Bethlehem,Electronics,Headphones,1,80,80,رنا عيسى
+413,2024-08-15,Hebron,Electronics,Laptop,4,900,3600,سارة يوسف
+414,2024-08-16,Bethlehem,Home & Kitchen,Blender,4,60,240,ليلى حداد
+415,2024-08-21,Hebron,Books,Dictionary,4,30,120,ليلى حداد
+416,2024-08-21,Ramallah,Books,Dictionary,3,30,90,ليلى حداد
+417,2024-08-24,Ramallah,Clothing,Shoes,4,55,220,يوسف نصار
+418,2024-08-29,Nablus,Electronics,Laptop,4,900,3600,نور شاهين
+419,2024-08-29,Jericho,Clothing,Jacket,5,70,350,رنا عيسى
+420,2024-08-29,Ramallah,Clothing,Shoes,5,55,275,نور شاهين
+421,2024-08-29,Jericho,Books,Cookbook,1,25,25,ليلى حداد
+422,2024-09-01,Bethlehem,Home & Kitchen,Blender,1,60,60,يوسف نصار
+423,2024-09-03,Jenin,Books,Cookbook,5,25,125,ليلى حداد
+424,2024-09-03,Hebron,Home & Kitchen,Blender,1,60,60,خالد سمارة
+425,2024-09-03,Jenin,Books,Dictionary,4,30,120,سارة يوسف
+426,2024-09-05,Ramallah,Home & Kitchen,Blender,1,60,60,رنا عيسى
+427,2024-09-08,Nablus,Clothing,Shoes,1,55,55,نور شاهين
+428,2024-09-08,Hebron,Clothing,Shoes,3,55,165,سارة يوسف
+429,2024-09-09,Hebron,Books,Novel,4,12,48,نور شاهين
+430,2024-09-10,Nablus,Home & Kitchen,Coffee Maker,1,120,120,أحمد خليل
+431,2024-09-11,Jericho,Books,Cookbook,1,25,25,يوسف نصار
+432,2024-09-16,Hebron,Books,Novel,2,12,24,يوسف نصار
+433,2024-09-21,Jenin,Books,Cookbook,5,25,125,أحمد خليل
+434,2024-09-21,Hebron,Electronics,Headphones,2,80,160,سارة يوسف
+435,2024-09-22,Hebron,Books,Novel,2,12,24,رنا عيسى
+436,2024-09-24,Nablus,Electronics,Laptop,3,900,2700,سارة يوسف
+437,2024-09-24,Ramallah,Books,Dictionary,4,30,120,أحمد خليل
+438,2024-09-27,Jericho,Home & Kitchen,Pan Set,2,45,90,سارة يوسف
+439,2024-09-30,Jericho,Home & Kitchen,Pan Set,1,45,45,يوسف نصار
+440,2024-10-02,Hebron,Books,Novel,2,12,24,محمد عودة
+441,2024-10-03,Ramallah,Clothing,T-Shirt,4,15,60,يوسف نصار
+442,2024-10-03,Ramallah,Books,Dictionary,4,30,120,رنا عيسى
+443,2024-10-04,Jenin,Clothing,Shoes,4,55,220,سارة يوسف
+444,2024-10-04,Ramallah,Electronics,Phone,4,600,2400,رنا عيسى
+445,2024-10-04,Ramallah,Home & Kitchen,Coffee Maker,4,120,480,نور شاهين
+446,2024-10-07,Hebron,Clothing,Shoes,2,55,110,أحمد خليل
+447,2024-10-12,Bethlehem,Books,Dictionary,2,30,60,محمد عودة
+448,2024-10-12,Hebron,Books,Novel,4,12,48,خالد سمارة
+449,2024-10-15,Jenin,Books,Novel,1,12,12,يوسف نصار
+450,2024-10-16,Nablus,Electronics,Laptop,3,900,2700,ليلى حداد
+451,2024-10-18,Bethlehem,Home & Kitchen,Coffee Maker,3,120,360,محمد عودة
+452,2024-10-18,Hebron,Books,Dictionary,5,30,150,أحمد خليل
+453,2024-10-20,Jericho,Books,Dictionary,3,30,90,خالد سمارة
+454,2024-10-23,Ramallah,Books,Cookbook,1,25,25,يوسف نصار
+455,2024-10-24,Ramallah,Clothing,T-Shirt,3,15,45,رنا عيسى
+456,2024-10-25,Jericho,Electronics,Headphones,4,80,320,يوسف نصار
+457,2024-10-25,Jericho,Electronics,Headphones,2,80,160,ليلى حداد
+458,2024-10-26,Ramallah,Books,Novel,2,12,24,أحمد خليل
+459,2024-10-28,Jenin,Clothing,Shoes,4,55,220,أحمد خليل
+460,2024-10-28,Jenin,Clothing,T-Shirt,3,15,45,ليلى حداد
+461,2024-10-31,Jenin,Home & Kitchen,Coffee Maker,2,120,240,خالد سمارة
+462,2024-11-02,Nablus,Electronics,Laptop,4,900,3600,محمد عودة
+463,2024-11-05,Bethlehem,Books,Cookbook,4,25,100,نور شاهين
+464,2024-11-05,Bethlehem,Clothing,Shoes,4,55,220,سارة يوسف
+465,2024-11-06,Hebron,Books,Dictionary,2,30,60,خالد سمارة
+466,2024-11-08,Jenin,Home & Kitchen,Pan Set,2,45,90,خالد سمارة
+467,2024-11-09,Hebron,Books,Dictionary,4,30,120,محمد عودة
+468,2024-11-10,Ramallah,Electronics,Laptop,3,900,2700,سارة يوسف
+469,2024-11-11,Jenin,Books,Dictionary,2,30,60,يوسف نصار
+470,2024-11-13,Jericho,Electronics,Phone,3,600,1800,محمد عودة
+471,2024-11-16,Nablus,Books,Novel,5,12,60,نور شاهين
+472,2024-11-17,Jericho,Electronics,Phone,3,600,1800,خالد سمارة
+473,2024-11-19,Nablus,Home & Kitchen,Pan Set,1,45,45,نور شاهين
+474,2024-11-20,Hebron,Electronics,Phone,5,600,3000,أحمد خليل
+475,2024-11-22,Jenin,Clothing,T-Shirt,1,15,15,ليلى حداد
+476,2024-11-27,Jericho,Home & Kitchen,Coffee Maker,5,120,600,محمد عودة
+477,2024-12-02,Ramallah,Home & Kitchen,Coffee Maker,2,120,240,رنا عيسى
+478,2024-12-02,Jericho,Books,Dictionary,4,30,120,محمد عودة
+479,2024-12-02,Ramallah,Books,Cookbook,4,25,100,أحمد خليل
+480,2024-12-02,Hebron,Books,Novel,2,12,24,يوسف نصار
+481,2024-12-03,Ramallah,Electronics,Phone,4,600,2400,سارة يوسف
+482,2024-12-07,Nablus,Home & Kitchen,Blender,3,60,180,خالد سمارة
+483,2024-12-07,Ramallah,Home & Kitchen,Coffee Maker,4,120,480,ليلى حداد
+484,2024-12-07,Hebron,Electronics,Headphones,3,80,240,ليلى حداد
+485,2024-12-08,Hebron,Clothing,Shoes,1,55,55,محمد عودة
+486,2024-12-09,Ramallah,Books,Cookbook,1,25,25,يوسف نصار
+487,2024-12-11,Hebron,Home & Kitchen,Coffee Maker,1,120,120,أحمد خليل
+488,2024-12-12,Hebron,Books,Dictionary,2,30,60,خالد سمارة
+489,2024-12-13,Nablus,Books,Novel,5,12,60,سارة يوسف
+490,2024-12-14,Nablus,Home & Kitchen,Pan Set,2,45,90,خالد سمارة
+491,2024-12-14,Nablus,Books,Cookbook,4,25,100,محمد عودة
+492,2024-12-17,Jenin,Books,Cookbook,5,25,125,نور شاهين
+493,2024-12-19,Jenin,Electronics,Headphones,2,80,160,ليلى حداد
+494,2024-12-20,Hebron,Books,Cookbook,3,25,75,ليلى حداد
+495,2024-12-20,Hebron,Books,Novel,2,12,24,ليلى حداد
+496,2024-12-20,Bethlehem,Clothing,Jacket,4,70,280,رنا عيسى
+497,2024-12-22,Hebron,Electronics,Laptop,2,900,1800,سارة يوسف
+498,2024-12-24,Bethlehem,Clothing,Jacket,4,70,280,رنا عيسى
+499,2024-12-26,Hebron,Home & Kitchen,Blender,1,60,60,رنا عيسى
+500,2024-12-26,Jericho,Clothing,T-Shirt,3,15,45,سارة يوسف

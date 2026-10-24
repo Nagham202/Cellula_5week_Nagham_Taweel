@@ -1,0 +1,243 @@
+{
+  "accuracy": 1.0,
+  "results": [
+    {
+      "request": "Write a function that checks if a string is a palindrome",
+      "expected": "Relevant",
+      "note": "in knowledge base (HumanEval/48)",
+      "verdict": "Relevant",
+      "raw_answer": "Relevant",
+      "correct": true,
+      "retrieved": [
+        "HumanEval/48",
+        "HumanEval/10",
+        "HumanEval/107"
+      ],
+      "closest_distance": 0.172
+    },
+    {
+      "request": "Find the largest prime factor of a number",
+      "expected": "Relevant",
+      "note": "in knowledge base (HumanEval/59)",
+      "verdict": "Relevant",
+      "raw_answer": "Relevant",
+      "correct": true,
+      "retrieved": [
+        "HumanEval/59",
+        "HumanEval/24",
+        "HumanEval/94"
+      ],
+      "closest_distance": 0.151
+    },
+    {
+      "request": "Write a function that returns the n-th Fibonacci number",
+      "expected": "Relevant",
+      "note": "in knowledge base (HumanEval/55)",
+      "verdict": "Relevant",
+      "raw_answer": "Relevant",
+      "correct": true,
+      "retrieved": [
+        "HumanEval/55",
+        "HumanEval/63",
+        "HumanEval/46"
+      ],
+      "closest_distance": 0.182
+    },
+    {
+      "request": "Sort a list of words by their length",
+      "expected": "Relevant",
+      "note": "similar list/string problems",
+      "verdict": "Relevant",
+      "raw_answer": "Relevant",
+      "correct": true,
+      "retrieved": [
+        "HumanEval/149",
+        "HumanEval/19",
+        "HumanEval/86"
+      ],
+      "closest_distance": 0.255
+    },
+    {
+      "request": "Count how many vowels are in a string",
+      "expected": "Relevant",
+      "note": "similar string problems",
+      "verdict": "Relevant",
+      "raw_answer": "Relevant",
+      "correct": true,
+      "retrieved": [
+        "HumanEval/64",
+        "HumanEval/98",
+        "HumanEval/16"
+      ],
+      "closest_distance": 0.17
+    },
+    {
+      "request": "Check if any two numbers in a list are closer to each other than a given threshold",
+      "expected": "Relevant",
+      "note": "held-out HumanEval/0, only similar problems in Chroma",
+      "verdict": "Relevant",
+      "raw_answer": "Relevant",
+      "correct": true,
+      "retrieved": [
+        "HumanEval/99",
+        "HumanEval/20",
+        "HumanEval/43"
+      ],
+      "closest_distance": 0.265
+    },
+    {
+      "request": "Return the sum of the squares of all odd numbers in a list",
+      "expected": "Relevant",
+      "note": "similar list/number problems",
+      "verdict": "Relevant",
+      "raw_answer": "Relevant",
+      "correct": true,
+      "retrieved": [
+        "HumanEval/133",
+        "HumanEval/151",
+        "HumanEval/142"
+      ],
+      "closest_distance": 0.199
+    },
+    {
+      "request": "Write a function that returns only the positive numbers in a list",
+      "expected": "Relevant",
+      "note": "held-out HumanEval/30",
+      "verdict": "Relevant",
+      "raw_answer": "Relevant",
+      "correct": true,
+      "retrieved": [
+        "HumanEval/108",
+        "HumanEval/106",
+        "HumanEval/102"
+      ],
+      "closest_distance": 0.286
+    },
+    {
+      "request": "Create a Django model and view for blog posts",
+      "expected": "Not Relevant",
+      "note": "web framework (Flask was taught in Step 7, so it is now Relevant)",
+      "verdict": "Not Relevant",
+      "raw_answer": "Not Relevant",
+      "correct": true,
+      "retrieved": [
+        "user/7b068a1f46",
+        "HumanEval/100",
+        "HumanEval/139"
+      ],
+      "closest_distance": 0.356
+    },
+    {
+      "request": "In Python, write a function that returns the sum of the even numbers in a list",
+      "expected": "Relevant",
+      "note": "borderline: no exact match, similar even-number/list problems",
+      "verdict": "Relevant",
+      "raw_answer": "Relevant",
+      "correct": true,
+      "retrieved": [
+        "HumanEval/138",
+        "HumanEval/155",
+        "HumanEval/108"
+      ],
+      "closest_distance": 0.17
+    },
+    {
+      "request": "Create a CNN model in PyTorch for image classification",
+      "expected": "Not Relevant",
+      "note": "deep learning",
+      "verdict": "Not Relevant",
+      "raw_answer": "Not Relevant",
+      "correct": true,
+      "retrieved": [
+        "HumanEval/28",
+        "HumanEval/157",
+        "HumanEval/21"
+      ],
+      "closest_distance": 0.377
+    },
+    {
+      "request": "Connect to a PostgreSQL database and insert a new row into a table",
+      "expected": "Not Relevant",
+      "note": "database",
+      "verdict": "Not Relevant",
+      "raw_answer": "Not Relevant",
+      "correct": true,
+      "retrieved": [
+        "HumanEval/28",
+        "HumanEval/53",
+        "HumanEval/5"
+      ],
+      "closest_distance": 0.355
+    },
+    {
+      "request": "Make a Tkinter window with a button that changes a label",
+      "expected": "Not Relevant",
+      "note": "GUI",
+      "verdict": "Not Relevant",
+      "raw_answer": "Not Relevant",
+      "correct": true,
+      "retrieved": [
+        "HumanEval/140",
+        "HumanEval/65",
+        "HumanEval/44"
+      ],
+      "closest_distance": 0.398
+    },
+    {
+      "request": "Scrape all the links from a web page using BeautifulSoup",
+      "expected": "Not Relevant",
+      "note": "web scraping library",
+      "verdict": "Not Relevant",
+      "raw_answer": "Not Relevant",
+      "correct": true,
+      "retrieved": [
+        "HumanEval/14",
+        "HumanEval/50",
+        "HumanEval/12"
+      ],
+      "closest_distance": 0.377
+    },
+    {
+      "request": "Write a React component that shows a list of todos",
+      "expected": "Not Relevant",
+      "note": "different language (JavaScript)",
+      "verdict": "Not Relevant",
+      "raw_answer": "Not Relevant",
+      "correct": true,
+      "retrieved": [
+        "HumanEval/8",
+        "HumanEval/62",
+        "HumanEval/160"
+      ],
+      "closest_distance": 0.386
+    },
+    {
+      "request": "Train a linear regression model with scikit-learn on a CSV file",
+      "expected": "Not Relevant",
+      "note": "machine learning library",
+      "verdict": "Not Relevant",
+      "raw_answer": "Not Relevant",
+      "correct": true,
+      "retrieved": [
+        "HumanEval/50",
+        "HumanEval/87",
+        "HumanEval/21"
+      ],
+      "closest_distance": 0.384
+    },
+    {
+      "request": "Send an email with an attachment using SMTP",
+      "expected": "Not Relevant",
+      "note": "networking",
+      "verdict": "Not Relevant",
+      "raw_answer": "Not Relevant",
+      "correct": true,
+      "retrieved": [
+        "HumanEval/14",
+        "HumanEval/93",
+        "HumanEval/50"
+      ],
+      "closest_distance": 0.413
+    }
+  ]
+}

@@ -1,0 +1,134 @@
+[
+  {
+    "file": "en_1.m4a",
+    "language": "en",
+    "mode": "auto",
+    "said": "What are the total sales per city?",
+    "heard": "What are the total sales pair city?",
+    "detected": "en",
+    "wer": 0.14,
+    "cer": 0.06,
+    "seconds": 6.12
+  },
+  {
+    "file": "en_1.m4a",
+    "language": "en",
+    "mode": "en",
+    "said": "What are the total sales per city?",
+    "heard": "What are the total sales pair city?",
+    "detected": "en",
+    "wer": 0.14,
+    "cer": 0.06,
+    "seconds": 3.56
+  },
+  {
+    "file": "en_2.m4a",
+    "language": "en",
+    "mode": "auto",
+    "said": "Which product sold the most in 2024?",
+    "heard": "Which product sells the most in 2024?",
+    "detected": "en",
+    "wer": 0.14,
+    "cer": 0.09,
+    "seconds": 5.92
+  },
+  {
+    "file": "en_2.m4a",
+    "language": "en",
+    "mode": "en",
+    "said": "Which product sold the most in 2024?",
+    "heard": "Which product sells the most in 2024?",
+    "detected": "en",
+    "wer": 0.14,
+    "cer": 0.09,
+    "seconds": 3.1
+  },
+  {
+    "file": "ar_1.m4a",
+    "language": "ar",
+    "mode": "auto",
+    "said": "ما هو مجموع المبيعات في رام الله سنة ألفين وأربعة وعشرين؟",
+    "heard": "ما هو مجموع المبيعات في رامونت لسنة 2024؟",
+    "detected": "ar",
+    "wer": 0.55,
+    "cer": 0.41,
+    "seconds": 6.15
+  },
+  {
+    "file": "ar_1.m4a",
+    "language": "ar",
+    "mode": "ar",
+    "said": "ما هو مجموع المبيعات في رام الله سنة ألفين وأربعة وعشرين؟",
+    "heard": "ما هو مجموع المبيعات في رامونت لسنة 2024؟",
+    "detected": "ar",
+    "wer": 0.55,
+    "cer": 0.41,
+    "seconds": 3.38
+  },
+  {
+    "file": "ar_2.m4a",
+    "language": "ar",
+    "mode": "auto",
+    "said": "قديش بعنا لابتوبات بنابلس؟",
+    "heard": "Add this brand it up to Pat Wiener Plus.",
+    "detected": "en",
+    "wer": 2.25,
+    "cer": 1.44,
+    "seconds": 5.97
+  },
+  {
+    "file": "ar_2.m4a",
+    "language": "ar",
+    "mode": "ar",
+    "said": "قديش بعنا لابتوبات بنابلس؟",
+    "heard": "أديش برنالبتو باتوين أبلس",
+    "detected": "ar",
+    "wer": 1.0,
+    "cer": 0.32,
+    "seconds": 2.99
+  },
+  {
+    "file": "ar_3.m4a",
+    "language": "ar",
+    "mode": "auto",
+    "said": "شو أكثر category بتبيع؟",
+    "heard": "شو أكتر كاتيغوري بتبير؟",
+    "detected": "ar",
+    "wer": 0.75,
+    "cer": 0.45,
+    "seconds": 5.94
+  },
+  {
+    "file": "ar_3.m4a",
+    "language": "ar",
+    "mode": "ar",
+    "said": "شو أكثر category بتبيع؟",
+    "heard": "شو أكتر كاتيغوري بتبير؟",
+    "detected": "ar",
+    "wer": 0.75,
+    "cer": 0.45,
+    "seconds": 3.25
+  },
+  {
+    "file": "en_code.aiff",
+    "language": "en",
+    "mode": "auto",
+    "said": "Write a Python function that checks if a number is prime.",
+    "heard": "Write a python function that checks if a number is prime.",
+    "detected": "en",
+    "wer": 0.0,
+    "cer": 0.0,
+    "seconds": 5.76
+  },
+  {
+    "file": "en_code.aiff",
+    "language": "en",
+    "mode": "en",
+    "said": "Write a Python function that checks if a number is prime.",
+    "heard": "Write a python function that checks if a number is prime.",
+    "detected": "en",
+    "wer": 0.0,
+    "cer": 0.0,
+    "seconds": 3.09
+  }
+]

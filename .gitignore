@@ -1,0 +1,15 @@
+.venv/
+__pycache__/
+
+.env
+
+.DS_Store
+
+data/chroma_db/
+
+data/memory.*
+
+data/datasets.db
+data/dataset_info.json
+
+data/audio_tests/*.m4a

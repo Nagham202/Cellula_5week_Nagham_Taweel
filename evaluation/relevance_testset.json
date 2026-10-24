@@ -1,0 +1,19 @@
+[
+  {"request": "Write a function that checks if a string is a palindrome", "expected": "Relevant", "note": "in knowledge base (HumanEval/48)"},
+  {"request": "Find the largest prime factor of a number", "expected": "Relevant", "note": "in knowledge base (HumanEval/59)"},
+  {"request": "Write a function that returns the n-th Fibonacci number", "expected": "Relevant", "note": "in knowledge base (HumanEval/55)"},
+  {"request": "Sort a list of words by their length", "expected": "Relevant", "note": "similar list/string problems"},
+  {"request": "Count how many vowels are in a string", "expected": "Relevant", "note": "similar string problems"},
+  {"request": "Check if any two numbers in a list are closer to each other than a given threshold", "expected": "Relevant", "note": "held-out HumanEval/0, only similar problems in Chroma"},
+  {"request": "Return the sum of the squares of all odd numbers in a list", "expected": "Relevant", "note": "similar list/number problems"},
+  {"request": "Write a function that returns only the positive numbers in a list", "expected": "Relevant", "note": "held-out HumanEval/30"},
+  {"request": "Create a Django model and view for blog posts", "expected": "Not Relevant", "note": "web framework (Flask was taught in Step 7, so it is now Relevant)"},
+  {"request": "In Python, write a function that returns the sum of the even numbers in a list", "expected": "Relevant", "note": "borderline: no exact match, similar even-number/list problems"},
+  {"request": "Create a CNN model in PyTorch for image classification", "expected": "Not Relevant", "note": "deep learning"},
+  {"request": "Connect to a PostgreSQL database and insert a new row into a table", "expected": "Not Relevant", "note": "database"},
+  {"request": "Make a Tkinter window with a button that changes a label", "expected": "Not Relevant", "note": "GUI"},
+  {"request": "Scrape all the links from a web page using BeautifulSoup", "expected": "Not Relevant", "note": "web scraping library"},
+  {"request": "Write a React component that shows a list of todos", "expected": "Not Relevant", "note": "different language (JavaScript)"},
+  {"request": "Train a linear regression model with scikit-learn on a CSV file", "expected": "Not Relevant", "note": "machine learning library"},
+  {"request": "Send an email with an attachment using SMTP", "expected": "Not Relevant", "note": "networking"}
+]

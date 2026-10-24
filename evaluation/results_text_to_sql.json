@@ -1,0 +1,165 @@
+{
+  "accuracy": 1.0,
+  "results": [
+    {
+      "language": "en",
+      "question": "What are the total sales per city?",
+      "gold_sql": "SELECT city, SUM(total) FROM sample_sales GROUP BY city",
+      "generated_sql": "SELECT city, ROUND(SUM(total), 2) AS total_sales\nFROM sample_sales\nGROUP BY city\nORDER BY total_sales DESC",
+      "error": null,
+      "fixed_by_retry": false,
+      "correct": true,
+      "seconds": 0.48
+    },
+    {
+      "language": "en",
+      "question": "How many orders were there in 2023?",
+      "gold_sql": "SELECT COUNT(*) FROM sample_sales WHERE strftime('%Y', order_date) = '2023'",
+      "generated_sql": "SELECT COUNT(*) AS order_count\nFROM sample_sales\nWHERE strftime('%Y', order_date) = '2023'",
+      "error": null,
+      "fixed_by_retry": false,
+      "correct": true,
+      "seconds": 0.4
+    },
+    {
+      "language": "en",
+      "question": "What is the average order total in Hebron?",
+      "gold_sql": "SELECT AVG(total) FROM sample_sales WHERE city = 'Hebron'",
+      "generated_sql": "SELECT ROUND(AVG(total), 2) AS average_total\nFROM sample_sales\nWHERE city = 'Hebron'",
+      "error": null,
+      "fixed_by_retry": false,
+      "correct": true,
+      "seconds": 0.69
+    },
+    {
+      "language": "en",
+      "question": "Top 3 products by revenue",
+      "gold_sql": "SELECT product, SUM(total) FROM sample_sales GROUP BY product ORDER BY 2 DESC LIMIT 3",
+      "generated_sql": "SELECT product,\n       ROUND(SUM(total), 2) AS total_revenue\nFROM sample_sales\nGROUP BY product\nORDER BY total_revenue DESC\nLIMIT 3",
+      "error": null,
+      "fixed_by_retry": false,
+      "correct": true,
+      "seconds": 0.51
+    },
+    {
+      "language": "en",
+      "question": "Which customer spent the most money?",
+      "gold_sql": "SELECT customer_name FROM sample_sales GROUP BY customer_name ORDER BY SUM(total) DESC LIMIT 1",
+      "generated_sql": "SELECT customer_name, ROUND(SUM(total), 2) AS total_spent\nFROM sample_sales\nGROUP BY customer_name\nORDER BY total_spent DESC\nLIMIT 1",
+      "error": null,
+      "fixed_by_retry": false,
+      "correct": true,
+      "seconds": 0.38
+    },
+    {
+      "language": "en",
+      "question": "How many laptop units were sold in total?",
+      "gold_sql": "SELECT SUM(quantity) FROM sample_sales WHERE product = 'Laptop'",
+      "generated_sql": "SELECT SUM(quantity) AS total_laptop_units\nFROM sample_sales\nWHERE product = 'Laptop'",
+      "error": null,
+      "fixed_by_retry": false,
+      "correct": true,
+      "seconds": 0.29
+    },
+    {
+      "language": "en",
+      "question": "Monthly total sales in 2024",
+      "gold_sql": "SELECT strftime('%Y-%m', order_date), SUM(total) FROM sample_sales WHERE strftime('%Y', order_date) = '2024' GROUP BY 1",
+      "generated_sql": "SELECT \n    strftime('%Y-%m', order_date) AS month,\n    ROUND(SUM(total), 2) AS total_sales\nFROM sample_sales\nWHERE strftime('%Y', order_date) = '2024'\nGROUP BY month\nORDER BY month ASC",
+      "error": null,
+      "fixed_by_retry": false,
+      "correct": true,
+      "seconds": 0.49
+    },
+    {
+      "language": "en",
+      "question": "Which city had the fewest orders?",
+      "gold_sql": "SELECT city FROM sample_sales GROUP BY city ORDER BY COUNT(*) ASC LIMIT 1",
+      "generated_sql": "SELECT city, COUNT(*) AS order_count\nFROM sample_sales\nGROUP BY city\nORDER BY order_count ASC\nLIMIT 1",
+      "error": null,
+      "fixed_by_retry": false,
+      "correct": true,
+      "seconds": 0.78
+    },
+    {
+      "language": "ar",
+      "question": "كم طلبية في رام الله سنة ٢٠٢٤؟",
+      "gold_sql": "SELECT COUNT(*) FROM sample_sales WHERE city = 'Ramallah' AND strftime('%Y', order_date) = '2024'",
+      "generated_sql": "SELECT COUNT(*) AS order_count\nFROM sample_sales\nWHERE city = 'Ramallah' AND strftime('%Y', order_date) = '2024'",
+      "error": null,
+      "fixed_by_retry": false,
+      "correct": true,
+      "seconds": 0.92
+    },
+    {
+      "language": "ar",
+      "question": "شو مجموع المبيعات لكل فئة؟",
+      "gold_sql": "SELECT category, SUM(total) FROM sample_sales GROUP BY category",
+      "generated_sql": "SELECT category, ROUND(SUM(total), 2) AS total_sales\nFROM sample_sales\nGROUP BY category\nORDER BY total_sales DESC",
+      "error": null,
+      "fixed_by_retry": false,
+      "correct": true,
+      "seconds": 0.46
+    },
+    {
+      "language": "ar",
+      "question": "قديش بعنا لابتوبات بنابلس؟",
+      "gold_sql": "SELECT SUM(total) FROM sample_sales WHERE product = 'Laptop' AND city = 'Nablus'",
+      "generated_sql": "SELECT ROUND(SUM(total), 2) AS total_sales\nFROM sample_sales\nWHERE city = 'Nablus' AND product = 'Laptop'",
+      "error": null,
+      "fixed_by_retry": false,
+      "correct": true,
+      "seconds": 0.56
+    },
+    {
+      "language": "ar",
+      "question": "مين الزبون اللي صرف أكثر مصاري؟",
+      "gold_sql": "SELECT customer_name FROM sample_sales GROUP BY customer_name ORDER BY SUM(total) DESC LIMIT 1",
+      "generated_sql": "SELECT customer_name, ROUND(SUM(total), 2) AS total_spent\nFROM sample_sales\nGROUP BY customer_name\nORDER BY total_spent DESC\nLIMIT 1",
+      "error": null,
+      "fixed_by_retry": false,
+      "correct": true,
+      "seconds": 0.42
+    },
+    {
+      "language": "ar",
+      "question": "شو معدل سعر الوحدة للإلكترونيات؟",
+      "gold_sql": "SELECT AVG(unit_price) FROM sample_sales WHERE category = 'Electronics'",
+      "generated_sql": "SELECT ROUND(AVG(unit_price), 2) AS avg_unit_price\nFROM sample_sales\nWHERE category = 'Electronics'",
+      "error": null,
+      "fixed_by_retry": false,
+      "correct": true,
+      "seconds": 0.31
+    },
+    {
+      "language": "ar",
+      "question": "كم طلبية عملت سارة يوسف؟",
+      "gold_sql": "SELECT COUNT(*) FROM sample_sales WHERE customer_name = 'سارة يوسف'",
+      "generated_sql": "SELECT COUNT(*) AS order_count\nFROM sample_sales\nWHERE customer_name = 'سارة يوسف'",
+      "error": null,
+      "fixed_by_retry": false,
+      "correct": true,
+      "seconds": 0.33
+    },
+    {
+      "language": "ar",
+      "question": "أي مدينة كان فيها أعلى مبيعات سنة 2023؟",
+      "gold_sql": "SELECT city FROM sample_sales WHERE strftime('%Y', order_date) = '2023' GROUP BY city ORDER BY SUM(total) DESC LIMIT 1",
+      "generated_sql": "SELECT city, ROUND(SUM(total), 2) AS total_sales\nFROM sample_sales\nWHERE strftime('%Y', order_date) = '2023'\nGROUP BY city\nORDER BY total_sales DESC\nLIMIT 1",
+      "error": null,
+      "fixed_by_retry": false,
+      "correct": true,
+      "seconds": 0.48
+    },
+    {
+      "language": "ar",
+      "question": "اعرض عدد الطلبات بكل شهر سنة ٢٠٢٣",
+      "gold_sql": "SELECT strftime('%Y-%m', order_date), COUNT(*) FROM sample_sales WHERE strftime('%Y', order_date) = '2023' GROUP BY 1",
+      "generated_sql": "SELECT strftime('%Y-%m', order_date) AS month,\n       COUNT(*) AS order_count\nFROM sample_sales\nWHERE strftime('%Y', order_date) = '2023'\nGROUP BY month\nORDER BY month ASC",
+      "error": null,
+      "fixed_by_retry": false,
+      "correct": true,
+      "seconds": 0.49
+    }
+  ]
+}

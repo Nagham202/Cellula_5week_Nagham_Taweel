@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Voice Data Assistant</title>
+<!-- markdown for the answers, dompurify so llm text can't inject html, chart.js for charts -->
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #f6f7f9; --panel: #ffffff; --text: #1d2330; --muted: #6b7280; --border: #e3e6ec;
+    --accent: #2f6fdf; --user: #e8f0fe; --danger: #c0392b; --code: #f3f4f6;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, "Segoe UI", Tahoma, sans-serif; background: var(--bg); color: var(--text); }
+  header { background: var(--panel); border-bottom: 1px solid var(--border); padding: 12px 16px; }
+  header h1 { margin: 0 0 8px; font-size: 18px; }
+  .toolbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 14px; }
+  .status { color: var(--muted); }
+  button, select, label.button { font: inherit; font-size: 14px; padding: 6px 12px; border-radius: 8px;
+    border: 1px solid var(--border); background: var(--panel); color: var(--text); cursor: pointer; }
+  button.primary { background: var(--accent); color: white; border-color: var(--accent); }
+  button.recording { background: var(--danger); color: white; border-color: var(--danger); }
+  button:disabled { opacity: .5; cursor: default; }
+  input[type=file] { display: none; }
+  main { max-width: 900px; margin: 0 auto; padding: 16px; padding-bottom: 140px; }
+  .bubble { padding: 10px 14px; border-radius: 12px; margin: 10px 0; line-height: 1.5; overflow-wrap: anywhere; }
+  .user { background: var(--user); margin-left: 15%; white-space: pre-wrap; }
+  .assistant { background: var(--panel); border: 1px solid var(--border); margin-right: 5%; }
+  .meta { font-size: 13px; color: var(--muted); margin-bottom: 6px; }
+  pre { background: var(--code); padding: 10px; border-radius: 8px; overflow-x: auto; font-size: 13px; }
+  table { border-collapse: collapse; margin: 8px 0; font-size: 14px; display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 4px 10px; text-align: start; }
+  th { background: var(--code); }
+  .chart { max-width: 600px; margin: 8px 0; }
+  details { margin-top: 8px; font-size: 13px; color: var(--muted); }
+  details li { margin: 2px 0; white-space: pre-wrap; }
+  .error { color: var(--danger); }
+  footer { position: fixed; bottom: 0; left: 0; right: 0; background: var(--panel); border-top: 1px solid var(--border); padding: 12px 16px; }
+  .input-row { max-width: 900px; margin: 0 auto; display: flex; gap: 8px; align-items: flex-end; }
+  textarea { flex: 1; font: inherit; font-size: 15px; padding: 8px 10px; border-radius: 8px; border: 1px solid var(--border); resize: none; min-height: 42px; max-height: 160px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>🎤 Voice Data Analysis Assistant</h1>
+  <div class="toolbar">
+    <span class="status" id="datasetStatus">Checking dataset…</span>
+    <button id="sampleButton">Use sample data</button>
+    <label class="button">Upload CSV / Excel<input type="file" id="datasetFile" accept=".csv,.xlsx,.xls"></label>
+    <button id="clearMemory">Clear memory</button>
+  </div>
+</header>
+
+<main id="chat"></main>
+
+<footer>
+  <div class="input-row">
+    <!-- auto detect sometimes gets short arabic clips wrong -->
+    <select id="language" title="Speech language">
+      <option value="auto">Auto</option>
+      <option value="ar">العربية</option>
+      <option value="en">English</option>
+    </select>
+    <button id="recordButton" title="Record a question">🎤 Record</button>
+    <label class="button" title="Send an audio file">📁<input type="file" id="audioFile" accept="audio/*"></label>
+    <textarea id="message" rows="1" dir="auto" placeholder="Ask about your data, or ask me to explain / write code…"></textarea>
+    <button class="primary" id="sendButton">Send</button>
+  </div>
+</footer>
+
+<script>
+const $ = (id) => document.getElementById(id);
+const chat = $("chat");
+
+const ROUTE_LABELS = {
+  explain: "🟢 Explain path (no RAG)",
+  generate: "🟡 Generate path (RAG + relevance check)",
+  not_relevant: "🔴 Not relevant: asking for a solution",
+  learn: "🔵 Learned a new solution",
+  data_analysis: "🟣 Data analysis (text → SQL → SQLite)",
+};
+const CODE_BLOCK = /```(?:python|py)?[ \t]*\n([\s\S]*?)```/g;
+const MAX_TABLE_ROWS = 50;
+
+function scrollDown() { window.scrollTo(0, document.body.scrollHeight); }
+
+// fastapi errors are either a string or a list
+async function errorText(response) {
+  try {
+    const body = await response.json();
+    return typeof body.detail === "string" ? body.detail : JSON.stringify(body.detail);
+  } catch { return `HTTP ${response.status}`; }
+}
+
+function addUserBubble(text) {
+  const div = document.createElement("div");
+  div.className = "bubble user";
+  // so arabic shows right to left
+  div.dir = "auto";
+  div.textContent = text;
+  chat.appendChild(div);
+  scrollDown();
+  return div;
+}
+
+function addAssistantBubble() {
+  const div = document.createElement("div");
+  div.className = "bubble assistant";
+  div.innerHTML = `
+    <div class="meta">Thinking…</div>
+    <div class="data"></div>
+    <div class="answer" dir="auto"></div>
+    <div class="run"></div>
+    <details><summary>How I answered</summary><ul class="trace"></ul></details>`;
+  chat.appendChild(div);
+  scrollDown();
+  return {
+    meta: div.querySelector(".meta"), data: div.querySelector(".data"),
+    answer: div.querySelector(".answer"), run: div.querySelector(".run"), trace: div.querySelector(".trace"),
+  };
+}
+
+function showMarkdown(element, text) {
+  element.innerHTML = DOMPurify.sanitize(marked.parse(text));
+}
+
+function showInfo(bubble, info) {
+  bubble.meta.textContent = ROUTE_LABELS[info.route] || info.route;
+  bubble.trace.innerHTML = "";
+  for (const step of info.trace) {
+    const li = document.createElement("li");
+    li.textContent = step;
+    bubble.trace.appendChild(li);
+  }
+  if (info.data) showData(bubble.data, info.data);
+}
+
+function showData(container, data) {
+  if (data.error || !data.columns.length) return;
+
+  const details = document.createElement("details");
+  details.innerHTML = "<summary>SQL query</summary>";
+  const pre = document.createElement("pre");
+  pre.textContent = data.sql;
+  details.appendChild(pre);
+  container.appendChild(details);
+
+  const table = document.createElement("table");
+  const header = table.insertRow();
+  for (const column of data.columns) {
+    const th = document.createElement("th");
+    th.textContent = column;
+    header.appendChild(th);
+  }
+  for (const row of data.rows.slice(0, MAX_TABLE_ROWS)) {
+    const tr = table.insertRow();
+    for (const value of row) {
+      const td = tr.insertCell();
+      td.dir = "auto";
+      td.textContent = value === null ? "—" : value;
+    }
+  }
+  container.appendChild(table);
+  if (data.truncated || data.rows.length > MAX_TABLE_ROWS) {
+    const note = document.createElement("div");
+    note.className = "meta";
+    note.textContent = `Showing ${Math.min(data.rows.length, MAX_TABLE_ROWS)} of ${data.row_count}${data.truncated ? "+" : ""} rows`;
+    container.appendChild(note);
+  }
+
+  if (data.chart) {
+    const box = document.createElement("div");
+    box.className = "chart";
+    const canvas = document.createElement("canvas");
+    box.appendChild(canvas);
+    container.appendChild(box);
+    // the backend only says which columns to plot, the drawing happens here
+    const x = data.columns.indexOf(data.chart.x);
+    const y = data.columns.indexOf(data.chart.y);
+    new Chart(canvas, {
+      type: data.chart.type,
+      data: {
+        labels: data.rows.map((row) => row[x]),
+        datasets: [{ label: data.chart.y, data: data.rows.map((row) => row[y]), backgroundColor: "#2f6fdf", borderColor: "#2f6fdf" }],
+      },
+      options: { plugins: { legend: { display: false } } },
+    });
+  }
+}
+
+function addRunButton(bubble, route, answer) {
+  if (route !== "generate") return;
+  const code = [...answer.matchAll(CODE_BLOCK)].map((match) => match[1].trim()).join("\n\n");
+  if (!code) return;
+
+  const button = document.createElement("button");
+  button.textContent = "▶ Run code";
+  const output = document.createElement("pre");
+  output.hidden = true;
+  button.onclick = async () => {
+    button.disabled = true;
+    output.hidden = false;
+    output.textContent = "Running in a separate process…";
+    const response = await fetch("/run", {
+      method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ code }),
+    });
+    const run = await response.json();
+    const status = run.timed_out ? `Stopped after ${run.seconds}s (time limit)`
+      : run.return_code === 0 ? `Finished without errors in ${run.seconds}s` : `Finished with an error (return code ${run.return_code})`;
+    output.textContent = [status, run.stdout, run.stderr].filter(Boolean).join("\n\n");
+    button.disabled = false;
+  };
+  bubble.run.append(button, output);
+}
+
+// typed messages use the streaming endpoint
+async function sendText() {
+  const message = $("message").value.trim();
+  if (!message) return;
+  $("message").value = "";
+  addUserBubble(message);
+  const bubble = addAssistantBubble();
+
+  const response = await fetch("/chat/stream", {
+    method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ message }),
+  });
+  if (!response.ok) {
+    bubble.meta.textContent = "";
+    bubble.answer.innerHTML = `<span class="error"></span>`;
+    bubble.answer.firstChild.textContent = await errorText(response);
+    return;
+  }
+
+  const reader = response.body.getReader();
+  const decoder = new TextDecoder();
+  let buffer = "", answer = "", route = "";
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    buffer += decoder.decode(value, { stream: true });
+    const lines = buffer.split("\n");
+    // the last piece can be half a line, keep it for the next read
+    buffer = lines.pop();
+    for (const line of lines) {
+      if (!line.trim()) continue;
+      const event = JSON.parse(line);
+      if (event.type === "info") { route = event.route; showInfo(bubble, event); }
+      if (event.type === "text") { answer += event.text; showMarkdown(bubble.answer, answer); scrollDown(); }
+      if (event.type === "error") { answer += `\n\n**Error:** ${event.detail}`; showMarkdown(bubble.answer, answer); }
+    }
+  }
+  addRunButton(bubble, route, answer);
+}
+
+// voice goes through /voice: whisper, then the same router
+async function sendVoice(audio, fileName) {
+  const userBubble = addUserBubble("🎤 Transcribing…");
+  const bubble = addAssistantBubble();
+
+  const form = new FormData();
+  form.append("audio", audio, fileName);
+  form.append("language", $("language").value);
+  const response = await fetch("/voice", { method: "POST", body: form });
+  if (!response.ok) {
+    userBubble.textContent = "🎤 (not understood)";
+    bubble.meta.textContent = "";
+    bubble.answer.innerHTML = `<span class="error"></span>`;
+    bubble.answer.firstChild.textContent = await errorText(response);
+    return;
+  }
+  const result = await response.json();
+  userBubble.textContent = `🎤 ${result.transcript.text}`;
+  showInfo(bubble, result);
+  showMarkdown(bubble.answer, result.answer);
+  addRunButton(bubble, result.route, result.answer);
+  scrollDown();
+}
+
+let recorder = null;
+async function toggleRecording() {
+  const button = $("recordButton");
+  if (recorder && recorder.state === "recording") {
+    recorder.stop();
+    return;
+  }
+  let stream;
+  try {
+    stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+  } catch (error) {
+    alert("Microphone not available: " + error.message);
+    return;
+  }
+  const chunks = [];
+  recorder = new MediaRecorder(stream);
+  recorder.ondataavailable = (event) => chunks.push(event.data);
+  recorder.onstop = () => {
+    // turns the mic indicator off
+    stream.getTracks().forEach((track) => track.stop());
+    button.textContent = "🎤 Record";
+    button.classList.remove("recording");
+    // chrome records webm, safari mp4
+    const extension = recorder.mimeType.includes("mp4") ? "m4a" : "webm";
+    sendVoice(new Blob(chunks, { type: recorder.mimeType }), `recording.${extension}`);
+  };
+  recorder.start();
+  button.textContent = "⏹ Stop";
+  button.classList.add("recording");
+}
+
+async function refreshDataset() {
+  const response = await fetch("/dataset");
+  if (response.ok) {
+    const { description } = await response.json();
+    $("datasetStatus").textContent = "📊 " + description.split("\n")[0];
+  } else {
+    $("datasetStatus").textContent = "📊 No dataset loaded";
+  }
+}
+
+async function loadDataset(request) {
+  $("datasetStatus").textContent = "Loading…";
+  const response = await fetch(request.url, request.options);
+  if (!response.ok) alert(await errorText(response));
+  refreshDataset();
+}
+
+$("sendButton").onclick = sendText;
+$("message").addEventListener("keydown", (event) => {
+  // shift+enter makes a new line
+  if (event.key === "Enter" && !event.shiftKey) { event.preventDefault(); sendText(); }
+});
+$("recordButton").onclick = toggleRecording;
+$("audioFile").onchange = (event) => {
+  const file = event.target.files[0];
+  if (file) sendVoice(file, file.name);
+  event.target.value = "";
+};
+$("sampleButton").onclick = () => loadDataset({ url: "/dataset/sample", options: { method: "POST" } });
+$("datasetFile").onchange = (event) => {
+  const file = event.target.files[0];
+  if (!file) return;
+  const form = new FormData();
+  form.append("file", file);
+  loadDataset({ url: "/dataset", options: { method: "POST", body: form } });
+  event.target.value = "";
+};
+$("clearMemory").onclick = async () => {
+  await fetch("/memory", { method: "DELETE" });
+  chat.innerHTML = "";
+};
+
+refreshDataset();
+</script>
+</body>
+</html>
